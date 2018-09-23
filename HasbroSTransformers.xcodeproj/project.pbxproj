@@ -16,20 +16,6 @@
 		FA8947362156BCF700AF1732 /* HasbroSTransformersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8947352156BCF700AF1732 /* HasbroSTransformersUITests.swift */; };
 		FA8947462156BE7400AF1732 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8947452156BE7400AF1732 /* DetailsViewController.swift */; };
 		FA8947482156CB2F00AF1732 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8947472156CB2F00AF1732 /* CollectionViewCell.swift */; };
-		FA8947512156D4DA00AF1732 /* orange.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA89474A2156D4D900AF1732 /* orange.jpg */; };
-		FA8947522156D4DA00AF1732 /* peach.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA89474B2156D4D900AF1732 /* peach.jpg */; };
-		FA8947532156D4DA00AF1732 /* kiwi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA89474C2156D4D900AF1732 /* kiwi.jpg */; };
-		FA8947542156D4DA00AF1732 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA89474D2156D4D900AF1732 /* apple.jpg */; };
-		FA8947552156D4DA00AF1732 /* grapes.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA89474E2156D4DA00AF1732 /* grapes.jpg */; };
-		FA8947562156D4DA00AF1732 /* banana.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA89474F2156D4DA00AF1732 /* banana.jpg */; };
-		FA8947572156D4DA00AF1732 /* apricot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA8947502156D4DA00AF1732 /* apricot.jpg */; };
-		FA8947582156D51900AF1732 /* apple.jpg in Sources */ = {isa = PBXBuildFile; fileRef = FA89474D2156D4D900AF1732 /* apple.jpg */; };
-		FA8947592156D51900AF1732 /* apricot.jpg in Sources */ = {isa = PBXBuildFile; fileRef = FA8947502156D4DA00AF1732 /* apricot.jpg */; };
-		FA89475A2156D51900AF1732 /* banana.jpg in Sources */ = {isa = PBXBuildFile; fileRef = FA89474F2156D4DA00AF1732 /* banana.jpg */; };
-		FA89475B2156D51900AF1732 /* grapes.jpg in Sources */ = {isa = PBXBuildFile; fileRef = FA89474E2156D4DA00AF1732 /* grapes.jpg */; };
-		FA89475C2156D51900AF1732 /* kiwi.jpg in Sources */ = {isa = PBXBuildFile; fileRef = FA89474C2156D4D900AF1732 /* kiwi.jpg */; };
-		FA89475D2156D51900AF1732 /* orange.jpg in Sources */ = {isa = PBXBuildFile; fileRef = FA89474A2156D4D900AF1732 /* orange.jpg */; };
-		FA89475E2156D51900AF1732 /* peach.jpg in Sources */ = {isa = PBXBuildFile; fileRef = FA89474B2156D4D900AF1732 /* peach.jpg */; };
 		FA8947602156E7EB00AF1732 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89475F2156E7EB00AF1732 /* Transformer.swift */; };
 		FA8947622156E82200AF1732 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8947612156E82200AF1732 /* API.swift */; };
 		FA8947642156E84900AF1732 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8947632156E84900AF1732 /* Settings.swift */; };
@@ -71,13 +57,6 @@
 		FA8947372156BCF700AF1732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA8947452156BE7400AF1732 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		FA8947472156CB2F00AF1732 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		FA89474A2156D4D900AF1732 /* orange.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = orange.jpg; sourceTree = "<group>"; };
-		FA89474B2156D4D900AF1732 /* peach.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = peach.jpg; sourceTree = "<group>"; };
-		FA89474C2156D4D900AF1732 /* kiwi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kiwi.jpg; sourceTree = "<group>"; };
-		FA89474D2156D4D900AF1732 /* apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpg; sourceTree = "<group>"; };
-		FA89474E2156D4DA00AF1732 /* grapes.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grapes.jpg; sourceTree = "<group>"; };
-		FA89474F2156D4DA00AF1732 /* banana.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banana.jpg; sourceTree = "<group>"; };
-		FA8947502156D4DA00AF1732 /* apricot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apricot.jpg; sourceTree = "<group>"; };
 		FA89475F2156E7EB00AF1732 /* Transformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
 		FA8947612156E82200AF1732 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		FA8947632156E84900AF1732 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -139,7 +118,6 @@
 				FA8947612156E82200AF1732 /* API.swift */,
 				FA8947632156E84900AF1732 /* Settings.swift */,
 				FA8947652156E87C00AF1732 /* GeneralFunctions.swift */,
-				FA8947492156D49700AF1732 /* tempresources */,
 				FA8947472156CB2F00AF1732 /* CollectionViewCell.swift */,
 				FA8947172156BCF500AF1732 /* ViewController.swift */,
 				FA89476A21577CEF00AF1732 /* extensions.swift */,
@@ -169,20 +147,6 @@
 				FA8947372156BCF700AF1732 /* Info.plist */,
 			);
 			path = HasbroSTransformersUITests;
-			sourceTree = "<group>";
-		};
-		FA8947492156D49700AF1732 /* tempresources */ = {
-			isa = PBXGroup;
-			children = (
-				FA89474D2156D4D900AF1732 /* apple.jpg */,
-				FA8947502156D4DA00AF1732 /* apricot.jpg */,
-				FA89474F2156D4DA00AF1732 /* banana.jpg */,
-				FA89474E2156D4DA00AF1732 /* grapes.jpg */,
-				FA89474C2156D4D900AF1732 /* kiwi.jpg */,
-				FA89474A2156D4D900AF1732 /* orange.jpg */,
-				FA89474B2156D4D900AF1732 /* peach.jpg */,
-			);
-			name = tempresources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,14 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA8947202156BCF600AF1732 /* LaunchScreen.storyboard in Resources */,
-				FA8947532156D4DA00AF1732 /* kiwi.jpg in Resources */,
-				FA8947522156D4DA00AF1732 /* peach.jpg in Resources */,
-				FA8947552156D4DA00AF1732 /* grapes.jpg in Resources */,
-				FA8947562156D4DA00AF1732 /* banana.jpg in Resources */,
-				FA8947542156D4DA00AF1732 /* apple.jpg in Resources */,
-				FA8947512156D4DA00AF1732 /* orange.jpg in Resources */,
 				FA89471D2156BCF600AF1732 /* Assets.xcassets in Resources */,
-				FA8947572156D4DA00AF1732 /* apricot.jpg in Resources */,
 				FA89471B2156BCF500AF1732 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,16 +280,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA8947582156D51900AF1732 /* apple.jpg in Sources */,
 				FA89476B21577CEF00AF1732 /* extensions.swift in Sources */,
-				FA8947592156D51900AF1732 /* apricot.jpg in Sources */,
-				FA89475A2156D51900AF1732 /* banana.jpg in Sources */,
 				FA89476921575FA000AF1732 /* ResultViewController.swift in Sources */,
-				FA89475B2156D51900AF1732 /* grapes.jpg in Sources */,
 				FA8947642156E84900AF1732 /* Settings.swift in Sources */,
-				FA89475C2156D51900AF1732 /* kiwi.jpg in Sources */,
-				FA89475D2156D51900AF1732 /* orange.jpg in Sources */,
-				FA89475E2156D51900AF1732 /* peach.jpg in Sources */,
 				FA8947602156E7EB00AF1732 /* Transformer.swift in Sources */,
 				FA8947622156E82200AF1732 /* API.swift in Sources */,
 				FA8947182156BCF500AF1732 /* ViewController.swift in Sources */,
