@@ -29,9 +29,9 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         actIndicatorView.alpha = 0.0
         navigationItem.title = " \(typeValue) Transformer"
-        teamTitle.text = ( teamSeg.selectedSegmentIndex == 0 ) ?  "Team: Autobots" : "Team: Decepticons"
         if ( typeValue == "Edit" ) {
             setInputs(inputTransformerValues: oneTransformer!)
         }
@@ -43,7 +43,7 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func updateTeamSeg(_ sender: UISegmentedControl) {
-        teamTitle.text = ( teamSeg.selectedSegmentIndex == 0 ) ?  "Team: Autobots" : "Team: Decepticons"
+        teamTitle.text = ( teamSeg.selectedSegmentIndex == 0 ) ?  "Team :" : "Team :"    //Autobots   Decepticons
     }
     
     
@@ -63,18 +63,9 @@ class DetailsViewController: UIViewController {
         }
         actIndicatorView.alpha = 0.0
         self.navigationController?.popViewController(animated: true)
-
-//        navigationController?.dismiss(animated: true, completion: nil)
-//        dismiss(animated: true, completion: nil)
-//        dismissed()
-
     }
     
-    func dismissed() {
-        let yourViewController = UIViewController()
-        guard let navigationController = self.navigationController else {return}
-        navigationController.pushViewController(yourViewController, animated: true)
-    }
+
     
     // MARK: - read Input Values
     func readInputs() -> [String : Any] {

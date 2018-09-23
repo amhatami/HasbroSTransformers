@@ -96,28 +96,57 @@ struct Transformer: Encodable & Decodable {
         ]
     }
 
+//    func amIWinnerVS(vsTransformer : Transformer) -> String {
+//        var amIWin : String = "tie"
+//        let mySelfOverall =  ( self.strength +
+//                            self.intelligence +
+//                            self.speed +
+//                            self.endurance +
+//                            self.rank +
+//                            self.courage +
+//                            self.firepower +
+//                            self.skill ) / 8
+//        let vsOverall = ( vsTransformer.strength +
+//                            vsTransformer.intelligence +
+//                            vsTransformer.speed +
+//                            vsTransformer.endurance +
+//                            vsTransformer.rank +
+//                            vsTransformer.courage +
+//                            vsTransformer.firepower +
+//                            vsTransformer.skill ) / 8
+//
+////        if (self.name.lowercased() == "optimus prime"  )
+//
+//        if (self.courage >= vsTransformer.courage + 4 && self.strength >=  vsTransformer.strength + 3 ) {
+//            amIWin = "win"
+//        } else if (self.courage + 4 < vsTransformer.courage && self.strength + 3 <  vsTransformer.strength ) {
+//            amIWin = "lose"
+//        } else if (self.skill >= vsTransformer.skill + 3 ) {
+//            amIWin = "win"
+//        } else if (self.skill + 3 < vsTransformer.skill ) {
+//            amIWin = "lose"
+//        } else if (mySelfOverall > vsOverall ) {
+//            amIWin = "win"
+//        } else if (mySelfOverall < vsOverall ) {
+//            amIWin = "lose"
+//        }
+//
+//        return amIWin
+//    }
+
+    
     func amIWinnerVS(vsTransformer : Transformer) -> String {
         var amIWin : String = "tie"
-        let mySelfOverall =  ( self.strength +
-                            self.intelligence +
-                            self.speed +
-                            self.endurance +
-                            self.rank +
-                            self.courage +
-                            self.firepower +
-                            self.skill ) / 8
-        let vsOverall = ( vsTransformer.strength +
-                            vsTransformer.intelligence +
-                            vsTransformer.speed +
-                            vsTransformer.endurance +
-                            vsTransformer.rank +
-                            vsTransformer.courage +
-                            vsTransformer.firepower +
-                            vsTransformer.skill ) / 8
-        
-//        if (self.name.lowercased() == "optimus prime"  )
-        
-        if (self.courage >= vsTransformer.courage + 4 && self.strength >=  vsTransformer.strength + 3 ) {
+
+        if ( checkRules(self, vsTransformer, "rule11") == "win" ) {
+            amIWin = "win"
+        } else if ( checkRules(vsTransformer, self, "rule11") == "win" ) {
+            amIWin = "lose"
+        } else if ( checkRules(self, vsTransformer, "rule12") == "win" ) {
+            amIWin = "win"
+        } else if ( checkRules(vsTransformer, self, "rule12") == "win" ) {
+            amIWin = "lose"
+        } else if (self.courage >= vsTransformer.courage + 4 && self.strength >=  vsTransformer.strength + 3 ) {
             amIWin = "win"
         } else if (self.courage + 4 < vsTransformer.courage && self.strength + 3 <  vsTransformer.strength ) {
             amIWin = "lose"
@@ -125,15 +154,72 @@ struct Transformer: Encodable & Decodable {
             amIWin = "win"
         } else if (self.skill + 3 < vsTransformer.skill ) {
             amIWin = "lose"
-        } else if (mySelfOverall > vsOverall ) {
+        } else if (checkRules(self, vsTransformer, "rule4") == "win" ) {
             amIWin = "win"
-        } else if (mySelfOverall < vsOverall ) {
+        } else if (checkRules(vsTransformer, self, "rule4") == "win" ) {
             amIWin = "lose"
         }
         
         return amIWin
     }
-
+    
+    
+    
+    
+    func checkRules(_ t1 : Transformer , _ t2 : Transformer , _ ruleName : String) -> String {
+        
+        var resultCase = "tie"
+        
+        let t1Overall =  ( t1.strength +
+            t1.intelligence +
+            t1.speed +
+            t1.endurance +
+            t1.rank +
+            t1.courage +
+            t1.firepower +
+            t1.skill ) / 8
+        let t2Overall = ( t2.strength +
+            t2.intelligence +
+            t2.speed +
+            t2.endurance +
+            t2.rank +
+            t2.courage +
+            t2.firepower +
+            t2.skill ) / 8
+        
+        switch ruleName {
+        case "rule11":
+            resultCase = (t1.name.lowercased() == "optimus prime" &&
+                            t2.name.lowercased() != "predaking" &&
+                            t2.name.lowercased() != t1.name.lowercased()) ?
+                                "win" : resultCase
+                break
+        case "rule12":
+            resultCase = (t1.name.lowercased() == t2.name.lowercased() ||
+                           ( t1.name.lowercased() == "predaking" &&
+                            t2.name.lowercased() == "optimus prime")) ?
+                                "gameover" : resultCase
+                break
+        case "rule2":
+            resultCase = (t1.courage >= t2.courage + 4 && t1.strength >=  t2.strength + 3 ) ?
+                        "win" : resultCase
+            break
+        case "rule3":
+            resultCase = (t1.skill >= t2.skill + 3 ) ?
+                "win" : resultCase
+            break
+        case "rule4":
+            resultCase = (t1Overall > t2Overall ) ?
+                "win" : resultCase
+            break
+        default:
+            resultCase = ""
+            break
+        }
+        return resultCase
+    }
+    
+    
     
     func getTeamName() -> String {
         return self.team == "A" ? "Autobots" : "Decepticons"

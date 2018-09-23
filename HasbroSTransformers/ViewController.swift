@@ -118,6 +118,9 @@ class ViewController: UIViewController , UICollectionViewDelegate, UICollectionV
 //        }
         
         
+        cell.cellEditBtn.customizeButtonG1()
+        cell.cellDeleteBtn.customizeButtonG1()
+
         if (editButton.title == "Done" && thisTransformer.name != "" ) {
             cell.cellDeleteBtn.isHidden = false
             cell.cellEditBtn.isHidden = false

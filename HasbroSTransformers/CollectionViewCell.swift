@@ -26,7 +26,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     var delegate : DataCollectionProtocol?
         var index : IndexPath?
-        
+    
         @IBAction func editBtn(_ sender: UIButton) {
             delegate?.passData(index: (index?.row)!)
         }
@@ -35,7 +35,6 @@ class CollectionViewCell: UICollectionViewCell {
         @IBAction func deleteBtn(_ sender: UIButton) {
             delegate?.deleteData(index: (index?.row)!)
         }
-    
     
     
 }
