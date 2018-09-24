@@ -8,9 +8,63 @@
 
 import UIKit
 
+//
+extension ViewController : DataCollectionProtocol {
+    func passData(index: Int) {
+        
+        print("hello paddData \(index)")
+        let vc =  storyboard?.instantiateViewController(withIdentifier: "DetailsAddOrEdit") as? DetailsViewController
+        vc?.keyIndex = transformerBattles[index].id
+        vc?.oneTransformer = transformerBattles[index]
+        vc?.typeValue = "Edit"
+        print("Delete")
+        print(transformerBattles[index].id)
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    func deleteData(index: Int) {
+        print("hello deleteData \(index)")
+        print("Delete")
+        print(transformerBattles[index].id)
+        _ = api.deleteTransformer(transformer: transformerBattles[index])
+        transformerBattles.remove(at: index)
+        let transformerMain = api.getTransformers()
+        let (transformerA , transformerD) = transformerTools.separateByFields(transformers: transformerMain)
+        transformerBattles = transformerTools.makeBattelsList(transformerA: transformerA, transformerD: transformerD)
+        collectionView.reloadData()
+    }
+}//end of extension  UIButton
 
+
+extension ViewController : UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let bounds = collectionView.bounds
+        let heightVal = self.view.frame.height
+        let widthVal = self.view.frame.width
+        let heightMul : CGFloat = (heightVal < widthVal) ? 2.0 : 4.0
+        
+        return CGSize(width: bounds.width / 2  , height:  bounds.height / heightMul )
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+}//end of extension  ViewController
+
+
+ //return color from RGB and HEX
 extension UIColor {
     
+    //few ready colors
     static let lightPink = UIColor(hex: "ffc0cb", alpha: 1)
     static let mistyRose = UIColor(hex: "ffe4e1")
     static let dustyDarkGreen  = UIColor(hex: "008080")
@@ -74,10 +128,10 @@ extension UIColor {
         )
     }
     
-}
+}//end of extension  UIColor
 
 
-//Extention two add customized buttons
+//Extention two add customization for buttons
 public extension UIButton {
     
     func customizeEditButton() {
@@ -118,12 +172,20 @@ public extension UIButton {
         self.layer.shadowOffset = CGSize(width: 2, height: 2)
     }
 
-    
-}
+    func shake(horizantaly:CGFloat = 0  , Verticaly:CGFloat = 0) {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.05
+        animation.repeatCount = 5
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: self.center.x - horizantaly, y: self.center.y - Verticaly ))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + horizantaly, y: self.center.y + Verticaly ))
+        self.layer.add(animation, forKey: "position")
+    }
+}//end of extension  UIButton
 
 
+//animation like shake and customization for UITextfield
 public extension  UITextField {
-    
     
     func shake(horizantaly:CGFloat = 0  , Verticaly:CGFloat = 0) {
         let animation = CABasicAnimation(keyPath: "position")
@@ -138,7 +200,6 @@ public extension  UITextField {
         
     }
     
-    
     func customizeTextField() {
         // change UIbutton propertie
         let c1GreenColor = (UIColor(red: -0.108958, green: 0.714926, blue: 0.758113, alpha: 1.0))
@@ -152,7 +213,6 @@ public extension  UITextField {
         self.layer.shadowOpacity = 0.8
         self.layer.shadowRadius = 12
         self.layer.shadowOffset = CGSize(width: 1, height: 1)
-        
     }
     
     func uncustomizeTextField(backGroundColor : UIColor ) {
@@ -161,80 +221,7 @@ public extension  UITextField {
         self.layer.shadowOpacity = 0.2
         self.layer.shadowRadius = 2
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
-}
+    }
 
-}
+}//end of extension  UITextField
 
-
-    class Pulsing: CALayer {
-        
-        var animationGroup = CAAnimationGroup()
-        
-        var initialPulseScale:Float = 0
-        var nextPulseAfter:TimeInterval = 0
-        var animationDuration:TimeInterval = 1.5
-        var radius:CGFloat = 200
-        var numberOfPulses:Float = Float.infinity
-        
-        override init(layer : Any) {
-            super.init(layer: layer)
-        }
-        
-        required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-        }
-        
-        init (numberOfPulses:Float = Float.infinity, radius:CGFloat , position:CGPoint){
-            super.init()
-            
-            self.backgroundColor = UIColor.black.cgColor
-            self.contentsScale = UIScreen.main.scale
-            self.opacity = 0
-            self.radius = radius
-            self.numberOfPulses = numberOfPulses
-            self.position = position
-            
-            self.bounds = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2)
-            self.cornerRadius = radius
-            
-            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
-                self.setupAnimatiomnGroup()
-                
-                DispatchQueue.main.async {
-                    self.add(self.animationGroup, forKey: "pulse")
-                }
-            }
-            
-        }
-        
-        func creatScaleAnimation () -> CABasicAnimation {
-            let scaleAnimation = CABasicAnimation(keyPath: "transform.scale.xy")
-            scaleAnimation.fromValue = NSNumber(value: initialPulseScale)
-            scaleAnimation.toValue = NSNumber(value: 1)
-            scaleAnimation.duration = animationDuration
-            
-            return scaleAnimation
-            
-        }
-        
-        func createOpacityAnimation () -> CAKeyframeAnimation {
-            
-            let opacityAnimation =  CAKeyframeAnimation(keyPath: "opacity")
-            opacityAnimation.duration = animationDuration
-            opacityAnimation.values = [0.4, 0.8 , 0.0]
-            opacityAnimation.keyTimes = [0, 0.2 , 1]
-            
-            return opacityAnimation
-        }
-        
-        func setupAnimatiomnGroup() {
-            self.animationGroup = CAAnimationGroup()
-            self.animationGroup.duration = animationDuration + nextPulseAfter
-            self.animationGroup.repeatCount = numberOfPulses
-            
-            let defaultCurve = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
-            self.animationGroup.timingFunction = defaultCurve
-            
-            self.animationGroup.animations = [creatScaleAnimation(), createOpacityAnimation()]
-        }
-}

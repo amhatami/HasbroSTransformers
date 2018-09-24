@@ -12,27 +12,26 @@
 		FA89471B2156BCF500AF1732 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8947192156BCF500AF1732 /* Main.storyboard */; };
 		FA89471D2156BCF600AF1732 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA89471C2156BCF600AF1732 /* Assets.xcassets */; };
 		FA8947202156BCF600AF1732 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA89471E2156BCF600AF1732 /* LaunchScreen.storyboard */; };
-		FA89472B2156BCF700AF1732 /* HasbroSTransformersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89472A2156BCF700AF1732 /* HasbroSTransformersTests.swift */; };
-		FA8947362156BCF700AF1732 /* HasbroSTransformersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8947352156BCF700AF1732 /* HasbroSTransformersUITests.swift */; };
 		FA8947462156BE7400AF1732 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8947452156BE7400AF1732 /* DetailsViewController.swift */; };
 		FA8947482156CB2F00AF1732 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8947472156CB2F00AF1732 /* CollectionViewCell.swift */; };
 		FA8947602156E7EB00AF1732 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89475F2156E7EB00AF1732 /* Transformer.swift */; };
 		FA8947622156E82200AF1732 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8947612156E82200AF1732 /* API.swift */; };
 		FA8947642156E84900AF1732 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8947632156E84900AF1732 /* Settings.swift */; };
 		FA8947662156E87C00AF1732 /* Generals.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8947652156E87C00AF1732 /* Generals.swift */; };
-		FA89476921575FA000AF1732 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89476821575FA000AF1732 /* ResultViewController.swift */; };
 		FA89476B21577CEF00AF1732 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89476A21577CEF00AF1732 /* Extensions.swift */; };
+		FA9DAB1D21591A2A00EB9F28 /* TransformersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9DAB1C21591A2A00EB9F28 /* TransformersUITests.swift */; };
+		FA9DAB2B21591E8F00EB9F28 /* TransformersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9DAB2A21591E8F00EB9F28 /* TransformersTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FA8947272156BCF600AF1732 /* PBXContainerItemProxy */ = {
+		FA9DAB1F21591A2A00EB9F28 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA89470A2156BCF500AF1732 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = FA8947112156BCF500AF1732;
 			remoteInfo = HasbroSTransformers;
 		};
-		FA8947322156BCF700AF1732 /* PBXContainerItemProxy */ = {
+		FA9DAB2D21591E8F00EB9F28 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FA89470A2156BCF500AF1732 /* Project object */;
 			proxyType = 1;
@@ -49,20 +48,19 @@
 		FA89471C2156BCF600AF1732 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA89471F2156BCF600AF1732 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA8947212156BCF600AF1732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA8947262156BCF600AF1732 /* HasbroSTransformersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HasbroSTransformersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA89472A2156BCF700AF1732 /* HasbroSTransformersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasbroSTransformersTests.swift; sourceTree = "<group>"; };
-		FA89472C2156BCF700AF1732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA8947312156BCF700AF1732 /* HasbroSTransformersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HasbroSTransformersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA8947352156BCF700AF1732 /* HasbroSTransformersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasbroSTransformersUITests.swift; sourceTree = "<group>"; };
-		FA8947372156BCF700AF1732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA8947452156BE7400AF1732 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		FA8947472156CB2F00AF1732 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		FA89475F2156E7EB00AF1732 /* Transformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
 		FA8947612156E82200AF1732 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		FA8947632156E84900AF1732 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		FA8947652156E87C00AF1732 /* Generals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generals.swift; sourceTree = "<group>"; };
-		FA89476821575FA000AF1732 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		FA89476A21577CEF00AF1732 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FA9DAB1A21591A2A00EB9F28 /* HasbroSTransformers.xcodeproj */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = HasbroSTransformers.xcodeproj; path = TransformersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA9DAB1C21591A2A00EB9F28 /* TransformersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformersUITests.swift; sourceTree = "<group>"; };
+		FA9DAB1E21591A2A00EB9F28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA9DAB2821591E8F00EB9F28 /* TransformersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransformersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA9DAB2A21591E8F00EB9F28 /* TransformersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformersTests.swift; sourceTree = "<group>"; };
+		FA9DAB2C21591E8F00EB9F28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,14 +71,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA8947232156BCF600AF1732 /* Frameworks */ = {
+		FA9DAB1721591A2A00EB9F28 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA89472E2156BCF700AF1732 /* Frameworks */ = {
+		FA9DAB2521591E8F00EB9F28 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -94,8 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				FA8947142156BCF500AF1732 /* HasbroSTransformers */,
-				FA8947292156BCF700AF1732 /* HasbroSTransformersTests */,
-				FA8947342156BCF700AF1732 /* HasbroSTransformersUITests */,
+				FA9DAB1B21591A2A00EB9F28 /* TransformersUITests */,
+				FA9DAB2921591E8F00EB9F28 /* TransformersTests */,
 				FA8947132156BCF500AF1732 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,8 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				FA8947122156BCF500AF1732 /* HasbroSTransformers.app */,
-				FA8947262156BCF600AF1732 /* HasbroSTransformersTests.xctest */,
-				FA8947312156BCF700AF1732 /* HasbroSTransformersUITests.xctest */,
+				FA9DAB1A21591A2A00EB9F28 /* HasbroSTransformers.xcodeproj */,
+				FA9DAB2821591E8F00EB9F28 /* TransformersTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,24 +122,6 @@
 				FA894773215875E000AF1732 /* Views */,
 			);
 			path = HasbroSTransformers;
-			sourceTree = "<group>";
-		};
-		FA8947292156BCF700AF1732 /* HasbroSTransformersTests */ = {
-			isa = PBXGroup;
-			children = (
-				FA89472A2156BCF700AF1732 /* HasbroSTransformersTests.swift */,
-				FA89472C2156BCF700AF1732 /* Info.plist */,
-			);
-			path = HasbroSTransformersTests;
-			sourceTree = "<group>";
-		};
-		FA8947342156BCF700AF1732 /* HasbroSTransformersUITests */ = {
-			isa = PBXGroup;
-			children = (
-				FA8947352156BCF700AF1732 /* HasbroSTransformersUITests.swift */,
-				FA8947372156BCF700AF1732 /* Info.plist */,
-			);
-			path = HasbroSTransformersUITests;
 			sourceTree = "<group>";
 		};
 		FA89476C2158749500AF1732 /* AppDelegate */ = {
@@ -198,7 +178,6 @@
 				FA8947472156CB2F00AF1732 /* CollectionViewCell.swift */,
 				FA8947172156BCF500AF1732 /* ViewController.swift */,
 				FA8947452156BE7400AF1732 /* DetailsViewController.swift */,
-				FA89476821575FA000AF1732 /* ResultViewController.swift */,
 			);
 			name = ViewControlers;
 			sourceTree = "<group>";
@@ -221,6 +200,24 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		FA9DAB1B21591A2A00EB9F28 /* TransformersUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FA9DAB1E21591A2A00EB9F28 /* Info.plist */,
+				FA9DAB1C21591A2A00EB9F28 /* TransformersUITests.swift */,
+			);
+			path = TransformersUITests;
+			sourceTree = "<group>";
+		};
+		FA9DAB2921591E8F00EB9F28 /* TransformersTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA9DAB2A21591E8F00EB9F28 /* TransformersTests.swift */,
+				FA9DAB2C21591E8F00EB9F28 /* Info.plist */,
+			);
+			path = TransformersTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -241,41 +238,41 @@
 			productReference = FA8947122156BCF500AF1732 /* HasbroSTransformers.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FA8947252156BCF600AF1732 /* HasbroSTransformersTests */ = {
+		FA9DAB1921591A2A00EB9F28 /* TransformersUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA89473D2156BCF700AF1732 /* Build configuration list for PBXNativeTarget "HasbroSTransformersTests" */;
+			buildConfigurationList = FA9DAB2121591A2A00EB9F28 /* Build configuration list for PBXNativeTarget "TransformersUITests" */;
 			buildPhases = (
-				FA8947222156BCF600AF1732 /* Sources */,
-				FA8947232156BCF600AF1732 /* Frameworks */,
-				FA8947242156BCF600AF1732 /* Resources */,
+				FA9DAB1621591A2A00EB9F28 /* Sources */,
+				FA9DAB1721591A2A00EB9F28 /* Frameworks */,
+				FA9DAB1821591A2A00EB9F28 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FA8947282156BCF600AF1732 /* PBXTargetDependency */,
+				FA9DAB2021591A2A00EB9F28 /* PBXTargetDependency */,
 			);
-			name = HasbroSTransformersTests;
-			productName = HasbroSTransformersTests;
-			productReference = FA8947262156BCF600AF1732 /* HasbroSTransformersTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		FA8947302156BCF700AF1732 /* HasbroSTransformersUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FA8947402156BCF700AF1732 /* Build configuration list for PBXNativeTarget "HasbroSTransformersUITests" */;
-			buildPhases = (
-				FA89472D2156BCF700AF1732 /* Sources */,
-				FA89472E2156BCF700AF1732 /* Frameworks */,
-				FA89472F2156BCF700AF1732 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FA8947332156BCF700AF1732 /* PBXTargetDependency */,
-			);
-			name = HasbroSTransformersUITests;
-			productName = HasbroSTransformersUITests;
-			productReference = FA8947312156BCF700AF1732 /* HasbroSTransformersUITests.xctest */;
+			name = TransformersUITests;
+			productName = TransformersUITests;
+			productReference = FA9DAB1A21591A2A00EB9F28 /* HasbroSTransformers.xcodeproj */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		FA9DAB2721591E8F00EB9F28 /* TransformersTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA9DAB2F21591E8F00EB9F28 /* Build configuration list for PBXNativeTarget "TransformersTests" */;
+			buildPhases = (
+				FA9DAB2421591E8F00EB9F28 /* Sources */,
+				FA9DAB2521591E8F00EB9F28 /* Frameworks */,
+				FA9DAB2621591E8F00EB9F28 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA9DAB2E21591E8F00EB9F28 /* PBXTargetDependency */,
+			);
+			name = TransformersTests;
+			productName = TransformersTests;
+			productReference = FA9DAB2821591E8F00EB9F28 /* TransformersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -290,11 +287,11 @@
 					FA8947112156BCF500AF1732 = {
 						CreatedOnToolsVersion = 10.0;
 					};
-					FA8947252156BCF600AF1732 = {
+					FA9DAB1921591A2A00EB9F28 = {
 						CreatedOnToolsVersion = 10.0;
 						TestTargetID = FA8947112156BCF500AF1732;
 					};
-					FA8947302156BCF700AF1732 = {
+					FA9DAB2721591E8F00EB9F28 = {
 						CreatedOnToolsVersion = 10.0;
 						TestTargetID = FA8947112156BCF500AF1732;
 					};
@@ -314,8 +311,8 @@
 			projectRoot = "";
 			targets = (
 				FA8947112156BCF500AF1732 /* HasbroSTransformers */,
-				FA8947252156BCF600AF1732 /* HasbroSTransformersTests */,
-				FA8947302156BCF700AF1732 /* HasbroSTransformersUITests */,
+				FA9DAB1921591A2A00EB9F28 /* TransformersUITests */,
+				FA9DAB2721591E8F00EB9F28 /* TransformersTests */,
 			);
 		};
 /* End PBXProject section */
@@ -331,14 +328,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA8947242156BCF600AF1732 /* Resources */ = {
+		FA9DAB1821591A2A00EB9F28 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA89472F2156BCF700AF1732 /* Resources */ = {
+		FA9DAB2621591E8F00EB9F28 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -353,7 +350,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA89476B21577CEF00AF1732 /* Extensions.swift in Sources */,
-				FA89476921575FA000AF1732 /* ResultViewController.swift in Sources */,
 				FA8947642156E84900AF1732 /* Settings.swift in Sources */,
 				FA8947602156E7EB00AF1732 /* Transformer.swift in Sources */,
 				FA8947622156E82200AF1732 /* API.swift in Sources */,
@@ -365,34 +361,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA8947222156BCF600AF1732 /* Sources */ = {
+		FA9DAB1621591A2A00EB9F28 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA89472B2156BCF700AF1732 /* HasbroSTransformersTests.swift in Sources */,
+				FA9DAB1D21591A2A00EB9F28 /* TransformersUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA89472D2156BCF700AF1732 /* Sources */ = {
+		FA9DAB2421591E8F00EB9F28 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA8947362156BCF700AF1732 /* HasbroSTransformersUITests.swift in Sources */,
+				FA9DAB2B21591E8F00EB9F28 /* TransformersTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FA8947282156BCF600AF1732 /* PBXTargetDependency */ = {
+		FA9DAB2021591A2A00EB9F28 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FA8947112156BCF500AF1732 /* HasbroSTransformers */;
-			targetProxy = FA8947272156BCF600AF1732 /* PBXContainerItemProxy */;
+			targetProxy = FA9DAB1F21591A2A00EB9F28 /* PBXContainerItemProxy */;
 		};
-		FA8947332156BCF700AF1732 /* PBXTargetDependency */ = {
+		FA9DAB2E21591E8F00EB9F28 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FA8947112156BCF500AF1732 /* HasbroSTransformers */;
-			targetProxy = FA8947322156BCF700AF1732 /* PBXContainerItemProxy */;
+			targetProxy = FA9DAB2D21591E8F00EB9F28 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -570,81 +566,77 @@
 			};
 			name = Release;
 		};
-		FA89473E2156BCF700AF1732 /* Debug */ = {
+		FA9DAB2221591A2A00EB9F28 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = HasbroSTransformersTests/Info.plist;
+				INFOPLIST_FILE = TransformersUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pooya.brain.dev.HasbroSTransformersTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pooya.brain.dev.TransformersUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HasbroSTransformers.app/HasbroSTransformers";
+				TEST_TARGET_NAME = HasbroSTransformers;
 			};
 			name = Debug;
 		};
-		FA89473F2156BCF700AF1732 /* Release */ = {
+		FA9DAB2321591A2A00EB9F28 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = HasbroSTransformersTests/Info.plist;
+				INFOPLIST_FILE = TransformersUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pooya.brain.dev.HasbroSTransformersTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pooya.brain.dev.TransformersUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HasbroSTransformers.app/HasbroSTransformers";
+				TEST_TARGET_NAME = HasbroSTransformers;
 			};
 			name = Release;
 		};
-		FA8947412156BCF700AF1732 /* Debug */ = {
+		FA9DAB3021591E8F00EB9F28 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = HasbroSTransformersUITests/Info.plist;
+				INFOPLIST_FILE = TransformersTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pooya.brain.dev.HasbroSTransformersUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pooya.brain.dev.TransformersTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = HasbroSTransformers;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HasbroSTransformers.app/HasbroSTransformers";
 			};
 			name = Debug;
 		};
-		FA8947422156BCF700AF1732 /* Release */ = {
+		FA9DAB3121591E8F00EB9F28 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = HasbroSTransformersUITests/Info.plist;
+				INFOPLIST_FILE = TransformersTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pooya.brain.dev.HasbroSTransformersUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pooya.brain.dev.TransformersTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = HasbroSTransformers;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HasbroSTransformers.app/HasbroSTransformers";
 			};
 			name = Release;
 		};
@@ -669,20 +661,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA89473D2156BCF700AF1732 /* Build configuration list for PBXNativeTarget "HasbroSTransformersTests" */ = {
+		FA9DAB2121591A2A00EB9F28 /* Build configuration list for PBXNativeTarget "TransformersUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FA89473E2156BCF700AF1732 /* Debug */,
-				FA89473F2156BCF700AF1732 /* Release */,
+				FA9DAB2221591A2A00EB9F28 /* Debug */,
+				FA9DAB2321591A2A00EB9F28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA8947402156BCF700AF1732 /* Build configuration list for PBXNativeTarget "HasbroSTransformersUITests" */ = {
+		FA9DAB2F21591E8F00EB9F28 /* Build configuration list for PBXNativeTarget "TransformersTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FA8947412156BCF700AF1732 /* Debug */,
-				FA8947422156BCF700AF1732 /* Release */,
+				FA9DAB3021591E8F00EB9F28 /* Debug */,
+				FA9DAB3121591E8F00EB9F28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

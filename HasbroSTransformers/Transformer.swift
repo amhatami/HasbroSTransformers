@@ -53,7 +53,20 @@ struct Transformer: Encodable & Decodable {
             team_icon = ""
         } else if ( make == "BestA" ) {
             id = ""
-            name = "TheBest"
+            name = "TheBestA"
+            team = "A"
+            strength = 10
+            intelligence =  10
+            speed =  10
+            endurance =  10
+            rank =  10
+            courage =  10
+            firepower =  10
+            skill =  10
+            team_icon = ""
+        } else if ( make == "BestD" ) {
+            id = ""
+            name = "TheBestD"
             team = "A"
             strength = 10
             intelligence =  10
@@ -96,56 +109,52 @@ struct Transformer: Encodable & Decodable {
         ]
     }
 
-//    func amIWinnerVS(vsTransformer : Transformer) -> String {
-//        var amIWin : String = "tie"
-//        let mySelfOverall =  ( self.strength +
-//                            self.intelligence +
-//                            self.speed +
-//                            self.endurance +
-//                            self.rank +
-//                            self.courage +
-//                            self.firepower +
-//                            self.skill ) / 8
-//        let vsOverall = ( vsTransformer.strength +
-//                            vsTransformer.intelligence +
-//                            vsTransformer.speed +
-//                            vsTransformer.endurance +
-//                            vsTransformer.rank +
-//                            vsTransformer.courage +
-//                            vsTransformer.firepower +
-//                            vsTransformer.skill ) / 8
-//
-////        if (self.name.lowercased() == "optimus prime"  )
-//
-//        if (self.courage >= vsTransformer.courage + 4 && self.strength >=  vsTransformer.strength + 3 ) {
-//            amIWin = "win"
-//        } else if (self.courage + 4 < vsTransformer.courage && self.strength + 3 <  vsTransformer.strength ) {
-//            amIWin = "lose"
-//        } else if (self.skill >= vsTransformer.skill + 3 ) {
-//            amIWin = "win"
-//        } else if (self.skill + 3 < vsTransformer.skill ) {
-//            amIWin = "lose"
-//        } else if (mySelfOverall > vsOverall ) {
-//            amIWin = "win"
-//        } else if (mySelfOverall < vsOverall ) {
-//            amIWin = "lose"
-//        }
-//
-//        return amIWin
-//    }
-
-    
     func amIWinnerVS(vsTransformer : Transformer) -> String {
         var amIWin : String = "tie"
+        let mySelfOverall =  ( self.strength +
+                            self.intelligence +
+                            self.speed +
+                            self.endurance +
+                            self.rank +
+                            self.courage +
+                            self.firepower +
+                            self.skill ) / 8
+        let vsOverall = ( vsTransformer.strength +
+                            vsTransformer.intelligence +
+                            vsTransformer.speed +
+                            vsTransformer.endurance +
+                            vsTransformer.rank +
+                            vsTransformer.courage +
+                            vsTransformer.firepower +
+                            vsTransformer.skill ) / 8
 
-        if ( checkRules(self, vsTransformer, "rule11") == "win" ) {
-            amIWin = "win"
-        } else if ( checkRules(vsTransformer, self, "rule11") == "win" ) {
+//        if (self.name.lowercased() == "optimus prime"  )
+        
+        if (vsTransformer.name.lowercased() == "optimus prime" &&
+            self.name.lowercased() != "predaking" &&
+            self.name.lowercased() != vsTransformer.name.lowercased()) {
             amIWin = "lose"
-        } else if ( checkRules(self, vsTransformer, "rule12") == "win" ) {
+        } else if (self.name.lowercased() == "optimus prime" &&
+            vsTransformer.name.lowercased() != "predaking" &&
+            vsTransformer.name.lowercased() != self.name.lowercased()) {
             amIWin = "win"
-        } else if ( checkRules(vsTransformer, self, "rule12") == "win" ) {
+        } else if (self.name.lowercased() == "predaking" &&
+            vsTransformer.name.lowercased() != "optimus prime" &&
+            vsTransformer.name.lowercased() != self.name.lowercased()) {
+            amIWin = "win"
+        } else if (vsTransformer.name.lowercased() == "predaking" &&
+            self.name.lowercased() != "optimus prime" &&
+            self.name.lowercased() != vsTransformer.name.lowercased()) {
             amIWin = "lose"
+        } else if (self.name.lowercased() == vsTransformer.name.lowercased() ||
+            ( self.name.lowercased() == "predaking" &&
+                vsTransformer.name.lowercased() == "optimus prime") || ( vsTransformer.name.lowercased() == "predaking" &&
+                    self.name.lowercased() == "optimus prime") ) {
+            amIWin = "gameover"
+        } else if (self.courage >= vsTransformer.courage + 4 && self.strength >=  vsTransformer.strength + 3 ) {
+            amIWin = "win"
+        } else if (self.courage >= vsTransformer.courage + 4 && self.strength >=  vsTransformer.strength + 3 ) {
+            amIWin = "win"
         } else if (self.courage >= vsTransformer.courage + 4 && self.strength >=  vsTransformer.strength + 3 ) {
             amIWin = "win"
         } else if (self.courage + 4 < vsTransformer.courage && self.strength + 3 <  vsTransformer.strength ) {
@@ -154,14 +163,43 @@ struct Transformer: Encodable & Decodable {
             amIWin = "win"
         } else if (self.skill + 3 < vsTransformer.skill ) {
             amIWin = "lose"
-        } else if (checkRules(self, vsTransformer, "rule4") == "win" ) {
+        } else if (mySelfOverall > vsOverall ) {
             amIWin = "win"
-        } else if (checkRules(vsTransformer, self, "rule4") == "win" ) {
+        } else if (mySelfOverall < vsOverall ) {
             amIWin = "lose"
         }
-        
+
         return amIWin
     }
+
+    
+//    func amIWinnerVS(vsTransformer : Transformer) -> String {
+//        var amIWin : String = "tie"
+//
+//        if ( checkRules(self, vsTransformer, "rule11") == "win" ) {
+//            amIWin = "win"
+//        } else if ( checkRules(vsTransformer, self, "rule11") == "win" ) {
+//            amIWin = "lose"
+//        } else if ( checkRules(self, vsTransformer, "rule12") == "win" ) {
+//            amIWin = "win"
+//        } else if ( checkRules(vsTransformer, self, "rule12") == "win" ) {
+//            amIWin = "lose"
+//        } else if (self.courage >= vsTransformer.courage + 4 && self.strength >=  vsTransformer.strength + 3 ) {
+//            amIWin = "win"
+//        } else if (self.courage + 4 < vsTransformer.courage && self.strength + 3 <  vsTransformer.strength ) {
+//            amIWin = "lose"
+//        } else if (self.skill >= vsTransformer.skill + 3 ) {
+//            amIWin = "win"
+//        } else if (self.skill + 3 < vsTransformer.skill ) {
+//            amIWin = "lose"
+//        } else if (checkRules(self, vsTransformer, "rule4") == "win" ) {
+//            amIWin = "win"
+//        } else if (checkRules(vsTransformer, self, "rule4") == "win" ) {
+//            amIWin = "lose"
+//        }
+//
+//        return amIWin
+//    }
     
     
     

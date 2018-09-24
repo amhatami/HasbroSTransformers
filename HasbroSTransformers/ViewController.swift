@@ -22,18 +22,29 @@ class ViewController: UIViewController , UICollectionViewDelegate, UICollectionV
     let relativeFontCellDescription:CGFloat = 0.015
     
     let api = API()
-//    var apiToken : String = ""
-    let tTools = TransformerTools()
-    
+    let transformerTools = TransformerTools()
     var transformerBattles : [Transformer] = []
     
     var preloadedImage : [String : UIImage] = [:]
-    var autobotloseCount = 0
-    var deceptloseCount = 0
+    var losersCount = ["A": 0, "D": 0 ]
     var destroyList : [Transformer] = []
+    var showBattleResult : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        let nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.black
+        nav?.tintColor = UIColor.yellow
+        navigationItem.title = "Hasbro’s Transformers"
+        
+        welcomeMsg.text = welcomeMsgText
+        welcomeMsg.textColor = UIColor.yellow
+        welcomeMsg.font = welcomeMsg.font.withSize(self.view.frame.height * relativeFontWelcomeTitle)
+        welcomeMsg.isHidden = false
         
         // get token and update apiToken attr
         getToken(getNew: true, api: api)
@@ -41,14 +52,20 @@ class ViewController: UIViewController , UICollectionViewDelegate, UICollectionV
         // get list of all trasformesr from transformers-api
         let transformerMain = api.getTransformers()
         
+        if transformerMain.count == 0 {
+            welcomeMsg.isHidden = false
+        } else {
+            welcomeMsg.isHidden = true
+        }
+        
         // pre load images from web to speed up collection view scrolling
         preloadedImage = getURLImagesListAndPreLoadThem(transformersList: transformerMain)
 
         // separate main trasformer list to Autobots and Decepticons sorted lists by rank
-        let (transformerA , transformerD) = tTools.separateByFields(transformers: transformerMain)
+        let (transformerA , transformerD) = transformerTools.separateByFields(transformers: transformerMain)
 
         // join Autobots and Decepticons lists and make transformer battle list
-        transformerBattles = tTools.makeBattelsList(transformerA: transformerA, transformerD: transformerD)
+        transformerBattles = transformerTools.makeBattelsList(transformerA: transformerA, transformerD: transformerD)
         
         //customize battle button and scale font size based on screen size 
         battlebuttonTitle.customizeBattleButton()
@@ -56,32 +73,25 @@ class ViewController: UIViewController , UICollectionViewDelegate, UICollectionV
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        let nav = self.navigationController?.navigationBar
         
-        autobotloseCount = 0
-        deceptloseCount = 0
-        nav?.barStyle = UIBarStyle.black
-        nav?.tintColor = UIColor.yellow
-        navigationItem.title = "Hasbro’s Transformers"
+        losersCount = ["A": 0, "D": 0 ]
+        showBattleResult = false
+        self.collectionView.reloadData()
         
         let transformerMain = api.getTransformers()
         
         if transformerMain.count == 0 {
-            welcomeMsg.text = welcomeMsgText
-            welcomeMsg.textColor = UIColor.yellow
-            welcomeMsg.font = welcomeMsg.font.withSize(self.view.frame.height * relativeFontWelcomeTitle)
             welcomeMsg.isHidden = false
         } else {
             welcomeMsg.isHidden = true
         }
         
-        
         let imagesList = findImageList(transformers: transformerMain)
         for oneImage in imagesList {
             preloadedImage[oneImage.key] = preLoadImage(imagePath: oneImage.value)
         }
-        let (transformerA , transformerD) = tTools.separateByFields(transformers: transformerMain)
-        transformerBattles = tTools.makeBattelsList(transformerA: transformerA, transformerD: transformerD)
+        let (transformerA , transformerD) = transformerTools.separateByFields(transformers: transformerMain)
+        transformerBattles = transformerTools.makeBattelsList(transformerA: transformerA, transformerD: transformerD)
         collectionView.reloadData()
     }
     
@@ -104,7 +114,6 @@ class ViewController: UIViewController , UICollectionViewDelegate, UICollectionV
         let frameWidth = self.view.frame.width
         let bestFrameSize = (frameHeight > frameWidth ) ? frameHeight : frameWidth
         
-        // MARK : Find and Mark am I winner
         var selfWin = "win"
         if (cellIndex % 2 == 0 && cellIndex + 1 <= transformerBattles.count ) {
             let vsTransformer = transformerBattles[cellIndex + 1]
@@ -144,39 +153,46 @@ class ViewController: UIViewController , UICollectionViewDelegate, UICollectionV
         cell.cellDetails.text =  (thisTransformer.name == "" ) ? "" : rank + strength + courage + intelligence + speed + firepower + skill + teamName
         cell.cellDetails.font = cell.cellDetails.font.withSize(bestFrameSize * relativeFontCellDescription)
         
-
-
-        switch selfWin {
-        case "win":
-            cell.backgroundColor =  UIColor(hex: "AFFFAC")
-            cell.cellImage.alpha = 1.0
-            cell.cellTitle.textColor = UIColor.purple
-            cell.cellDetails.textColor = UIColor.black
-            break
-        case "lose":
-            cell.backgroundColor =  UIColor(hex: "f8f8f8")
-            cell.cellImage.alpha = 0.2
-            cell.cellImage.tintColor = UIColor(hex: "EB9597")
-            cell.cellTitle.textColor = UIColor(hex: "EB9597")
-            cell.cellDetails.textColor = UIColor(hex: "EB9597")
-            if thisTransformer.team == "A" {
-                autobotloseCount = autobotloseCount + 1
-            } else {
-                deceptloseCount = deceptloseCount + 1
+        
+                    cell.backgroundColor =  UIColor(hex: "FFFFFF")
+                    cell.cellImage.alpha = 1.0
+                    cell.cellTitle.textColor = UIColor.purple
+                    cell.cellDetails.textColor = UIColor.black
+            switch selfWin {
+            case "win":
+                if showBattleResult {
+                    cell.backgroundColor =  UIColor(hex: "AFFFAC")
+                    cell.cellImage.alpha = 1.0
+                    cell.cellTitle.textColor = UIColor.purple
+                    cell.cellDetails.textColor = UIColor.black
+                }
+                break
+            case "lose":
+                if showBattleResult {
+                    cell.backgroundColor =  UIColor(hex: "f8f8f8")
+                    cell.cellImage.alpha = 0.2
+                    cell.cellImage.tintColor = UIColor(hex: "EB9597")
+                    cell.cellTitle.textColor = UIColor(hex: "EB9597")
+                    cell.cellDetails.textColor = UIColor(hex: "EB9597")
+                }
+                    if thisTransformer.name == "" {
+                        // No Action
+                    } else if thisTransformer.team == "A" {
+                        losersCount["A"] = losersCount["A"]! + 1
+                        destroyList.append(thisTransformer)
+                    } else {
+                        losersCount["D"] = losersCount["D"]! + 1
+                        destroyList.append(thisTransformer)
+                    }
+                break
+            default:
+                if showBattleResult {
+                    cell.backgroundColor =  UIColor(hex: "D5D7FF")
+                    cell.cellImage.alpha = 0.8
+                    cell.cellTitle.textColor = UIColor.purple
+                    cell.cellDetails.textColor = UIColor.black
+                }
             }
-            break
-        default:
-            cell.backgroundColor =  UIColor(hex: "D5D7FF")
-            cell.cellImage.alpha = 0.8
-            cell.cellTitle.textColor = UIColor.purple
-            cell.cellDetails.textColor = UIColor.black
-        }
-
-        
-        
-        
-        
-        
         cell.index = indexPath
         cell.delegate = self
         
@@ -188,24 +204,47 @@ class ViewController: UIViewController , UICollectionViewDelegate, UICollectionV
         //CFPropertyList.remove(at: indexPath.row)
         collectionView.deleteItems(at: [indexPath])
     }
-    // MARK: Make battle and go to the result view
+    
+    // in case device rotation from portrate to landscape or reverse reload collectionView
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        if UIDevice.current.orientation.isLandscape {
+            collectionView.reloadData()
+        } else {
+            collectionView.reloadData()
+        }
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    
     @IBAction func battlesAct(_ sender: UIButton) {
-        // TODO : Battle
-        let transformerMain = api.getTransformers()
-        let (transformerA , transformerD) = tTools.separateByFields(transformers: transformerMain)
-        transformerBattles = tTools.makeBattelsList(transformerA: transformerA, transformerD: transformerD)
-        self.collectionView.reloadData()
-        
-        
-//        let vc =  storyboard?.instantiateViewController(withIdentifier: "DetailsAddOrEdit") as? DetailsViewController
-//        vc?.keyIndex = transformerBattles[index].id
-//        vc?.oneTransformer = transformerBattles[index]
-//        vc?.typeValue = "Edit"
-//        print("Delete")
-//        print(transformerBattles[index].id)
-//        self.navigationController?.pushViewController(vc!, animated: true)
-
-        
+        if (battlebuttonTitle.titleLabel?.text == "Start Battle") {
+            battlebuttonTitle.setTitle("Restart Game", for: .normal)
+            showBattleResult = true
+            battlebuttonTitle.shake(horizantaly: 8)
+            collectionView.reloadData()
+            
+            let alert = UIAlertController(title: "Result", message: battleWinner(numA: losersCount["A"]!, numD: losersCount["D"]!), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            battlebuttonTitle.setTitle("Wait..", for: .normal)
+            showBattleResult = false
+            for oneTransform in destroyList {
+                let _ = api.deleteTransformer(transformer: oneTransform)
+            }
+            battlebuttonTitle.setTitle("Start Battle", for: .normal)
+            losersCount = ["A": 0, "D": 0 ]
+            destroyList  = []
+            let transformerMain = api.getTransformers()
+            let (transformerA , transformerD) = transformerTools.separateByFields(transformers: transformerMain)
+            transformerBattles = transformerTools.makeBattelsList(transformerA: transformerA, transformerD: transformerD)
+            collectionView.reloadData()
+        }
         
     }
 
@@ -225,75 +264,7 @@ class ViewController: UIViewController , UICollectionViewDelegate, UICollectionV
         vc?.typeValue = "Add"
         self.navigationController?.pushViewController(vc!, animated: true)
     }
-
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        let vc =  storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController
-        //        vc?.name = imgArray[indexPath.row]
-        //        self.navigationController?.pushViewController(vc!, animated: true)
-    }
-    
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        
-        if UIDevice.current.orientation.isLandscape {
-            collectionView.reloadData()
-        } else {
-            collectionView.reloadData()
-        }
-    }
     
     
 }
 
-
-extension ViewController : DataCollectionProtocol {
-    func passData(index: Int) {
-        
-        print("hello paddData \(index)")
-        let vc =  storyboard?.instantiateViewController(withIdentifier: "DetailsAddOrEdit") as? DetailsViewController
-        vc?.keyIndex = transformerBattles[index].id
-        vc?.oneTransformer = transformerBattles[index]
-        vc?.typeValue = "Edit"
-        print("Delete")
-        print(transformerBattles[index].id)
-        self.navigationController?.pushViewController(vc!, animated: true)
-    }
-    
-    func deleteData(index: Int) {
-        print("hello deleteData \(index)")
-        print("Delete")
-        print(transformerBattles[index].id)
-        _ = api.deleteTransformer(transformer: transformerBattles[index])
-        transformerBattles.remove(at: index)
-        let transformerMain = api.getTransformers()
-        let (transformerA , transformerD) = tTools.separateByFields(transformers: transformerMain)
-        transformerBattles = tTools.makeBattelsList(transformerA: transformerA, transformerD: transformerD)
-        collectionView.reloadData()
-    }
-}
-
-
-
-extension ViewController : UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let bounds = collectionView.bounds
-        let heightVal = self.view.frame.height
-        let widthVal = self.view.frame.width
-        let heightMul : CGFloat = (heightVal < widthVal) ? 2.0 : 4.0
-        
-        return CGSize(width: bounds.width / 2  , height:  bounds.height / heightMul )
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-}

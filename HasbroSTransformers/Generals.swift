@@ -18,7 +18,7 @@ func getToken(getNew : Bool, api : API)  {
         apiToken = "Bearer " + api.getOneToken()
         defaultssettings.saveSettings(keyName: "token", keyValue: apiToken)
     }
-    print(apiToken)
+    //print(apiToken)
     api.apiToken = apiToken
 }
 
@@ -46,6 +46,17 @@ func preLoadImage(imagePath : String) -> UIImage {
     return image
 }
 
+func battleWinner(numA : Int, numD : Int) -> String {
+    var winner : String = ""
+    if (numA > numD ){
+        winner = "Decepticons is winner with \(numA) Win"
+    } else if (numA < numD ) {
+        winner = "Autobots is Winner with \(numD) Win"
+    }  else {
+        winner = "Tie No Winner"
+    }
+    return winner
+}
 
 
 func locateQuickErr(myLine: Int , inputStr : String = "" ) {

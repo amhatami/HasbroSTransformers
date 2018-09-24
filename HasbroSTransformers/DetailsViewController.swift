@@ -54,6 +54,12 @@ class DetailsViewController: UIViewController {
         actIndicatorView.alpha = 1.0
         if ( typeValue == "Add" ) {
             let transformer = Transformer(json: readInputs())
+            if (transformer.name == "" ) {
+                nameText.shake(horizantaly: 8)
+                nameText.backgroundColor = UIColor(hex: "FF99A0")
+                actIndicatorView.alpha = 0.0
+                return
+            }
             print("Add")
             let _ = api.postTransformer(transformer: transformer)
         } else if ( typeValue == "Edit" )  {

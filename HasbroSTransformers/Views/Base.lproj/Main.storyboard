@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -121,22 +122,22 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="nyp-KE-pC5"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRd-eI-6wU">
-                                <rect key="frame" x="4" y="596.5" width="367" height="66.5"/>
-                                <color key="backgroundColor" red="0.66218462226800823" green="0.82602360718403434" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Start Battle">
-                                    <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="battlesAct:" destination="BYZ-38-t0r" eventType="touchDown" id="WKT-W0-JrP"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDN-rE-H24">
                                 <rect key="frame" x="37.5" y="66.5" width="300" height="534"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRd-eI-6wU">
+                                <rect key="frame" x="4" y="596.5" width="367" height="66.5"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="Start Battle">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="battlesAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1gc-ZK-EdW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Y0q-sf-VZ2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5UW-3j-XPL"/>
@@ -155,16 +156,23 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="JD2-NU-IWJ">
-                        <barButtonItem key="leftBarButtonItem" title="Edit" id="Ldn-Lf-7Rf">
+                        <barButtonItem key="leftBarButtonItem" title="Help" id="HjP-YS-90S">
                             <connections>
-                                <action selector="editAct:" destination="BYZ-38-t0r" id="38d-gV-MgL"/>
+                                <segue destination="V4C-X8-t64" kind="show" id="DLK-Mx-wXV"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="dkV-rX-IQu">
-                            <connections>
-                                <action selector="addAct:" destination="BYZ-38-t0r" id="ViO-PW-VoM"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Add" id="dkV-rX-IQu">
+                                <connections>
+                                    <action selector="addAct:" destination="BYZ-38-t0r" id="ViO-PW-VoM"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Edit" id="Ldn-Lf-7Rf">
+                                <connections>
+                                    <action selector="editAct:" destination="BYZ-38-t0r" id="38d-gV-MgL"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="dkV-rX-IQu" id="Tde-Xc-2EV"/>
@@ -612,65 +620,54 @@
             </objects>
             <point key="canvasLocation" x="1446" y="691"/>
         </scene>
-        <!--Result View Controller-->
+        <!--View Controller-->
         <scene sceneID="fw3-JA-nZl">
             <objects>
-                <viewController storyboardIdentifier="ResultPage" id="V4C-X8-t64" customClass="ResultViewController" customModule="HasbroSTransformers" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="V4C-X8-t64" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qj6-t7-7d4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTr-jw-3lQ">
-                                <rect key="frame" x="0.0" y="233.5" width="375" height="200"/>
-                                <color key="backgroundColor" red="0.86162301740000002" green="0.97679832229999997" blue="0.9881622779" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ee-lR-s5F">
-                                <rect key="frame" x="0.0" y="167" width="375" height="66.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;&lt; Game Rules &gt;&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ee-lR-s5F">
+                                <rect key="frame" x="0.0" y="64" width="375" height="66.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.2261243657" green="0.21753191890000001" blue="0.99942404029999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8il-mT-s4K">
-                                <rect key="frame" x="177" y="480" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wsf-b5-fA4">
-                                <rect key="frame" x="0.0" y="433.5" width="375" height="67"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Tap to strat snother game with Winners">
-                                    <color key="titleColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="startNewAct:" destination="V4C-X8-t64" eventType="touchUpInside" id="U9S-GF-GD5"/>
-                                </connections>
-                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Md3-3n-cPP">
+                                <rect key="frame" x="10" y="135.5" width="355" height="526.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">The basic rules of the battle are:
+● The teams should be sorted by rank and faced off one on one against each other in order to determine a victor, the loser is eliminated
+● A battle between opponents uses the following rules:
+	○ If any fighter is down 4 or more points of courage and 3 or more points of strength compared to their opponent, the opponent automatically wins the face-off regardless of overall rating (opponent has ran away)
+	○ Otherwise, if one of the fighters is 3 or more points of skill above their opponent, they win the fight regardless of overall rating
+	○ The winner is the Transformer with the highest overall rating
+● In the event of a tie, both Transformers are considered destroyed
+● Any Transformers who don’t have a fight are skipped (i.e. if it’s a team of 2 vs. a team of 1, there’s only going to be one battle)
+● The team who eliminated the largest number of the opposing team is the winner 
+Special rules
+● Any Transformer named Optimus Prime or Predaking wins his fight automatically regardless of
+any other criteria
+● In the event either of the above face each other (or a duplicate of each other), the game immediately ends with all competitors destroyed
+</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="X5o-ze-sVj" firstAttribute="trailing" secondItem="7Ee-lR-s5F" secondAttribute="trailing" id="1ny-tQ-iEV"/>
-                            <constraint firstItem="7Ee-lR-s5F" firstAttribute="leading" secondItem="X5o-ze-sVj" secondAttribute="leading" id="976-Lg-zxi"/>
-                            <constraint firstItem="Wsf-b5-fA4" firstAttribute="trailing" secondItem="X5o-ze-sVj" secondAttribute="trailing" id="Lln-Ub-9bU"/>
-                            <constraint firstItem="OTr-jw-3lQ" firstAttribute="centerY" secondItem="qj6-t7-7d4" secondAttribute="centerY" id="P5r-Aj-9ry"/>
-                            <constraint firstItem="OTr-jw-3lQ" firstAttribute="trailing" secondItem="X5o-ze-sVj" secondAttribute="trailing" id="SBO-O7-ICW"/>
-                            <constraint firstItem="OTr-jw-3lQ" firstAttribute="height" secondItem="qj6-t7-7d4" secondAttribute="height" multiplier="0.3" id="YOr-1l-fvj"/>
-                            <constraint firstItem="Wsf-b5-fA4" firstAttribute="height" secondItem="qj6-t7-7d4" secondAttribute="height" multiplier="0.1" id="dvC-Kg-1pl"/>
-                            <constraint firstItem="OTr-jw-3lQ" firstAttribute="leading" secondItem="X5o-ze-sVj" secondAttribute="leading" id="ghA-Xg-Jbv"/>
-                            <constraint firstItem="OTr-jw-3lQ" firstAttribute="top" secondItem="7Ee-lR-s5F" secondAttribute="bottom" id="mko-BL-0dI"/>
-                            <constraint firstItem="Wsf-b5-fA4" firstAttribute="leading" secondItem="X5o-ze-sVj" secondAttribute="leading" id="njA-wO-jua"/>
-                            <constraint firstItem="Wsf-b5-fA4" firstAttribute="top" secondItem="OTr-jw-3lQ" secondAttribute="bottom" id="uCM-5M-PGx"/>
-                            <constraint firstItem="7Ee-lR-s5F" firstAttribute="height" secondItem="qj6-t7-7d4" secondAttribute="height" multiplier="0.1" id="yz7-Vv-QUz"/>
+                            <constraint firstItem="7Ee-lR-s5F" firstAttribute="top" secondItem="X5o-ze-sVj" secondAttribute="top" id="LK7-rV-VGC"/>
+                            <constraint firstItem="7Ee-lR-s5F" firstAttribute="trailing" secondItem="X5o-ze-sVj" secondAttribute="trailing" id="PLY-jP-3hs"/>
+                            <constraint firstItem="Md3-3n-cPP" firstAttribute="top" secondItem="7Ee-lR-s5F" secondAttribute="bottom" constant="5" id="Y1N-qX-pfR"/>
+                            <constraint firstItem="7Ee-lR-s5F" firstAttribute="leading" secondItem="X5o-ze-sVj" secondAttribute="leading" id="dva-fp-P8s"/>
+                            <constraint firstItem="7Ee-lR-s5F" firstAttribute="height" secondItem="qj6-t7-7d4" secondAttribute="height" multiplier="0.1" id="eEP-K4-ruW"/>
+                            <constraint firstItem="X5o-ze-sVj" firstAttribute="bottom" secondItem="Md3-3n-cPP" secondAttribute="bottom" constant="5" id="eiA-DK-O8A"/>
+                            <constraint firstItem="Md3-3n-cPP" firstAttribute="leading" secondItem="X5o-ze-sVj" secondAttribute="leading" constant="10" id="pDd-Q0-8Xk"/>
+                            <constraint firstItem="X5o-ze-sVj" firstAttribute="trailing" secondItem="Md3-3n-cPP" secondAttribute="trailing" constant="10" id="voK-R2-oVf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X5o-ze-sVj"/>
                     </view>
-                    <connections>
-                        <outlet property="indicatorView" destination="8il-mT-s4K" id="LIY-Kg-ABx"/>
-                        <outlet property="resultDescription" destination="OTr-jw-3lQ" id="exX-5E-OEB"/>
-                        <outlet property="resultTitle" destination="7Ee-lR-s5F" id="VpN-Lb-kXG"/>
-                        <outlet property="startBtnTitle" destination="Wsf-b5-fA4" id="HNj-sP-iMR"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tT-qc-gGU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
