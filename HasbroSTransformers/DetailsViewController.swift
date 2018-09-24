@@ -21,7 +21,8 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var actIndicatorView: UIActivityIndicatorView!
     
     let api = API()
-    
+   // var apiToken : String = ""
+
     let teamDef: [Int: String] =
         [0: "A",
          1: "D"]
@@ -29,6 +30,8 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // get token and update apiToken attr
+        getToken(getNew: false, api: api)
         
         actIndicatorView.alpha = 0.0
         navigationItem.title = " \(typeValue) Transformer"
@@ -52,12 +55,12 @@ class DetailsViewController: UIViewController {
         if ( typeValue == "Add" ) {
             let transformer = Transformer(json: readInputs())
             print("Add")
-            api.postTransformer(transformer: transformer)
+            let _ = api.postTransformer(transformer: transformer)
         } else if ( typeValue == "Edit" )  {
             var transformer = Transformer(json: readInputs())
             transformer.id = keyIndex
             print("Edit")
-            api.putTransformer(transformer: transformer)
+            let _ = api.putTransformer(transformer: transformer)
         } else {
             // TODO
         }
@@ -71,8 +74,8 @@ class DetailsViewController: UIViewController {
     func readInputs() -> [String : Any] {
         
         var jsonObject: [String: Any]  = [
-            "name" : nameText.text,
-            "team" : teamDef[teamSeg.selectedSegmentIndex]
+            "name" : nameText.text as Any,
+            "team" : teamDef[teamSeg.selectedSegmentIndex] as Any
         ];
         
         for  segment in attrSegment {
@@ -108,7 +111,7 @@ class DetailsViewController: UIViewController {
     }
     
     
-    // MARK: - set form Input Values
+    //MARK: - set form Input Values
     func setInputs(inputTransformerValues : Transformer) {
         
         nameText.text = inputTransformerValues.name

@@ -10,76 +10,82 @@ import UIKit
 
 class ViewController: UIViewController , UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet weak var welcomeMsg: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addButton: UIBarButtonItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
-    @IBOutlet weak var buttonTitle: UIButton!
-    @IBOutlet weak var actIndicateView: UIActivityIndicatorView!
+    @IBOutlet weak var battlebuttonTitle: UIButton!
     
-    let relativeFontNavTitle:CGFloat = 0.035
+    let relativeFontWelcomeTitle:CGFloat = 0.045
     let relativeFontButton:CGFloat = 0.060
     let relativeFontCellTitle:CGFloat = 0.023
     let relativeFontCellDescription:CGFloat = 0.015
     
     let api = API()
+//    var apiToken : String = ""
     let tTools = TransformerTools()
     
     var transformerBattles : [Transformer] = []
     
     var preloadedImage : [String : UIImage] = [:]
-    var deceptImage : UIImage?
-    var questionImage : UIImage?
     var autobotloseCount = 0
     var deceptloseCount = 0
     var destroyList : [Transformer] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // get token and update apiToken attr
+        getToken(getNew: true, api: api)
+        
+        // get list of all trasformesr from transformers-api
+        let transformerMain = api.getTransformers()
+        
+        // pre load images from web to speed up collection view scrolling
+        preloadedImage = getURLImagesListAndPreLoadThem(transformersList: transformerMain)
+
+        // separate main trasformer list to Autobots and Decepticons sorted lists by rank
+        let (transformerA , transformerD) = tTools.separateByFields(transformers: transformerMain)
+
+        // join Autobots and Decepticons lists and make transformer battle list
+        transformerBattles = tTools.makeBattelsList(transformerA: transformerA, transformerD: transformerD)
+        
+        //customize battle button and scale font size based on screen size 
+        battlebuttonTitle.customizeBattleButton()
+        battlebuttonTitle.titleLabel?.font = battlebuttonTitle.titleLabel?.font.withSize(self.view.frame.height * relativeFontButton)
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         let nav = self.navigationController?.navigationBar
-
+        
         autobotloseCount = 0
         deceptloseCount = 0
         nav?.barStyle = UIBarStyle.black
         nav?.tintColor = UIColor.yellow
-
-//        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 100))
-//        imageView.contentMode = .scaleAspectFit
-
-//        let image = UIImage(named: "transformersLogos")
-//        imageView.image = image
-        
-//        navigationItem.titleView = imageView
         navigationItem.title = "Hasbro’s Transformers"
         
-        print("ViewDidAppear")
         let transformerMain = api.getTransformers()
+        
+        if transformerMain.count == 0 {
+            welcomeMsg.text = welcomeMsgText
+            welcomeMsg.textColor = UIColor.yellow
+            welcomeMsg.font = welcomeMsg.font.withSize(self.view.frame.height * relativeFontWelcomeTitle)
+            welcomeMsg.isHidden = false
+        } else {
+            welcomeMsg.isHidden = true
+        }
+        
+        
+        let imagesList = findImageList(transformers: transformerMain)
+        for oneImage in imagesList {
+            preloadedImage[oneImage.key] = preLoadImage(imagePath: oneImage.value)
+        }
         let (transformerA , transformerD) = tTools.separateByFields(transformers: transformerMain)
         transformerBattles = tTools.makeBattelsList(transformerA: transformerA, transformerD: transformerD)
         collectionView.reloadData()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        destroyList = []
-        questionImage = UIImage(contentsOfFile: "questionMark")
-        
-        let transformerMain = api.getTransformers()
-        var imagesList = findImageList(transformers: transformerMain)
-        for oneImage in imagesList {
-            preloadedImage[oneImage.key] = preLoadImage(imagePath: oneImage.value)
-        }
-
-        let (transformerA , transformerD) = tTools.separateByFields(transformers: transformerMain)
-        transformerBattles = tTools.makeBattelsList(transformerA: transformerA, transformerD: transformerD)
-        
-        print(transformerMain.count)
-        print(transformerA.count)
-        print(transformerD.count)
-        
-        //collectionView.collectionViewLayout = CustomImageLayout()
-        buttonTitle.titleLabel?.font = buttonTitle.titleLabel?.font.withSize(self.view.frame.height * relativeFontButton)
-    }
-
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -111,15 +117,8 @@ class ViewController: UIViewController , UICollectionViewDelegate, UICollectionV
         }
 
         
-//        if (cellIndex % 2 == 0) {
-//            cell.leftCellImage.isHidden = true
-//        } else {
-//            cell.rightCellImage.isHidden = true
-//        }
-        
-        
-        cell.cellEditBtn.customizeButtonG1()
-        cell.cellDeleteBtn.customizeButtonG1()
+        cell.cellEditBtn.customizeEditButton()
+        cell.cellDeleteBtn.customizeDeleteButton()
 
         if (editButton.title == "Done" && thisTransformer.name != "" ) {
             cell.cellDeleteBtn.isHidden = false
@@ -136,7 +135,7 @@ class ViewController: UIViewController , UICollectionViewDelegate, UICollectionV
         let intelligence = "Intelligence: " + String(thisTransformer.intelligence) + "\n"
         let speed = "Speed: " + String(thisTransformer.speed) + "\n"
         let firepower = "Firepower: " + String(thisTransformer.firepower) + "\n"
-        let endurance = "Endurance: " + String(thisTransformer.endurance) + "\n"
+//        let endurance = "Endurance: " + String(thisTransformer.endurance) + "\n"
         let teamName = "Team: " + thisTransformer.getTeamName() + "\n"
 
         cell.cellImage.image = preloadedImage[thisTransformer.team]
@@ -189,13 +188,25 @@ class ViewController: UIViewController , UICollectionViewDelegate, UICollectionV
         //CFPropertyList.remove(at: indexPath.row)
         collectionView.deleteItems(at: [indexPath])
     }
-    
+    // MARK: Make battle and go to the result view
     @IBAction func battlesAct(_ sender: UIButton) {
-        //TODO Battle
+        // TODO : Battle
         let transformerMain = api.getTransformers()
         let (transformerA , transformerD) = tTools.separateByFields(transformers: transformerMain)
         transformerBattles = tTools.makeBattelsList(transformerA: transformerA, transformerD: transformerD)
         self.collectionView.reloadData()
+        
+        
+//        let vc =  storyboard?.instantiateViewController(withIdentifier: "DetailsAddOrEdit") as? DetailsViewController
+//        vc?.keyIndex = transformerBattles[index].id
+//        vc?.oneTransformer = transformerBattles[index]
+//        vc?.typeValue = "Edit"
+//        print("Delete")
+//        print(transformerBattles[index].id)
+//        self.navigationController?.pushViewController(vc!, animated: true)
+
+        
+        
     }
 
     @IBAction func editAct(_ sender: UIButton) {
@@ -238,7 +249,6 @@ class ViewController: UIViewController , UICollectionViewDelegate, UICollectionV
 extension ViewController : DataCollectionProtocol {
     func passData(index: Int) {
         
-        actIndicateView.alpha = 1.0
         print("hello paddData \(index)")
         let vc =  storyboard?.instantiateViewController(withIdentifier: "DetailsAddOrEdit") as? DetailsViewController
         vc?.keyIndex = transformerBattles[index].id
@@ -247,21 +257,18 @@ extension ViewController : DataCollectionProtocol {
         print("Delete")
         print(transformerBattles[index].id)
         self.navigationController?.pushViewController(vc!, animated: true)
-        actIndicateView.alpha = 0.0
     }
     
     func deleteData(index: Int) {
-        actIndicateView.alpha = 1.0
         print("hello deleteData \(index)")
         print("Delete")
         print(transformerBattles[index].id)
-        api.deleteTransformer(transformer: transformerBattles[index])  
+        _ = api.deleteTransformer(transformer: transformerBattles[index])
         transformerBattles.remove(at: index)
         let transformerMain = api.getTransformers()
         let (transformerA , transformerD) = tTools.separateByFields(transformers: transformerMain)
         transformerBattles = tTools.makeBattelsList(transformerA: transformerA, transformerD: transformerD)
         collectionView.reloadData()
-        actIndicateView.alpha = 0.0
     }
 }
 
@@ -288,35 +295,5 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
-    }
-}
-
-
-class CustomImageLayout: UICollectionViewFlowLayout {
-    
-    var numberOfColumns:CGFloat = 2.0
-    
-    override init() {
-        super.init()
-        setupLayout()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupLayout()
-    }
-    
-    override var itemSize: CGSize {
-        set { }
-        get {
-            let itemWidth = (self.collectionView!.frame.width - (self.numberOfColumns - 1)) / self.numberOfColumns
-            return CGSize(width: itemWidth, height: itemWidth)
-        }
-    }
-    
-    func setupLayout() {
-        minimumInteritemSpacing = 1 // Set to zero if you want
-        minimumLineSpacing = 1
-        scrollDirection = .vertical
     }
 }

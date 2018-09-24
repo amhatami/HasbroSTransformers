@@ -31,7 +31,6 @@ class CollectionViewCell: UICollectionViewCell {
             delegate?.passData(index: (index?.row)!)
         }
         
-        
         @IBAction func deleteBtn(_ sender: UIButton) {
             delegate?.deleteData(index: (index?.row)!)
         }

@@ -76,29 +76,48 @@ extension UIColor {
     
 }
 
+
+//Extention two add customized buttons
 public extension UIButton {
     
-    func customizeButtonG1() {
-        // change UIbutton propertie
+    func customizeEditButton() {
         let c1GreenColor = (UIColor(red: -0.108958, green: 0.714926, blue: 0.758113, alpha: 1.0))
         let c2GreenColor = (UIColor(red: 0.108958, green: 0.714926, blue: 0.758113, alpha: 1.0))
         self.backgroundColor = UIColor.yellow
         self.layer.cornerRadius = 7
         self.layer.borderWidth = 0.8
         self.layer.borderColor = c1GreenColor.cgColor
-        
         self.layer.shadowColor = c2GreenColor.cgColor
         self.layer.shadowOpacity = 0.8
         self.layer.shadowRadius = 12
         self.layer.shadowOffset = CGSize(width: 1, height: 1)
-        
-//        self.setImage(UIImage(named:"3d-glass-refresh-32X32.png"), for: .normal)
-//        self.imageEdgeInsets = UIEdgeInsets(top: 6,left: 100,bottom: 6,right: 14)
-//        self.titleEdgeInsets = UIEdgeInsets(top: 0,left: -30,bottom: 0,right: 34)
-        
     }
-    
-    
+
+    func customizeDeleteButton() {
+        let c1GreenColor = (UIColor(red: -0.108958, green: 0.714926, blue: 0.758113, alpha: 1.0))
+        let c2GreenColor = (UIColor(red: 0.108958, green: 0.714926, blue: 0.758113, alpha: 1.0))
+        self.backgroundColor = UIColor.red
+        self.layer.cornerRadius = 7
+        self.layer.borderWidth = 0.8
+        self.layer.borderColor = c1GreenColor.cgColor
+        self.layer.shadowColor = c2GreenColor.cgColor
+        self.layer.shadowOpacity = 0.8
+        self.layer.shadowRadius = 12
+        self.layer.shadowOffset = CGSize(width: 1, height: 1)
+    }
+
+    func customizeBattleButton() {
+        let c1GreenColor = (UIColor(red: -0.108958, green: 0.714926, blue: 0.758113, alpha: 1.0))
+        self.backgroundColor = UIColor(patternImage: UIImage(named: "Stainless-Steel.jpg")!)
+        self.layer.cornerRadius = 15
+        self.layer.borderWidth = 0.8
+        self.layer.borderColor = c1GreenColor.cgColor
+        self.layer.shadowColor = UIColor.yellow.cgColor
+        self.layer.shadowOpacity = 0.8
+        self.layer.shadowRadius = 12
+        self.layer.shadowOffset = CGSize(width: 2, height: 2)
+    }
+
     
 }
 

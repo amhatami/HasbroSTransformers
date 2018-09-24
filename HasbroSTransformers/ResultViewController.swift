@@ -24,9 +24,13 @@ class ResultViewController: UIViewController {
     var destroyList : [Transformer] = []
     
     let api = API()
+    var apiToken : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // get token and update apiToken attr
+        getToken(getNew: false, api: api)
         
         indicatorView.alpha = 0.0
         

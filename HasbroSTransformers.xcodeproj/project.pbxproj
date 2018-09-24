@@ -19,9 +19,9 @@
 		FA8947602156E7EB00AF1732 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89475F2156E7EB00AF1732 /* Transformer.swift */; };
 		FA8947622156E82200AF1732 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8947612156E82200AF1732 /* API.swift */; };
 		FA8947642156E84900AF1732 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8947632156E84900AF1732 /* Settings.swift */; };
-		FA8947662156E87C00AF1732 /* GeneralFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8947652156E87C00AF1732 /* GeneralFunctions.swift */; };
+		FA8947662156E87C00AF1732 /* Generals.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8947652156E87C00AF1732 /* Generals.swift */; };
 		FA89476921575FA000AF1732 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89476821575FA000AF1732 /* ResultViewController.swift */; };
-		FA89476B21577CEF00AF1732 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89476A21577CEF00AF1732 /* extensions.swift */; };
+		FA89476B21577CEF00AF1732 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89476A21577CEF00AF1732 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,9 +60,9 @@
 		FA89475F2156E7EB00AF1732 /* Transformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
 		FA8947612156E82200AF1732 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		FA8947632156E84900AF1732 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		FA8947652156E87C00AF1732 /* GeneralFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralFunctions.swift; sourceTree = "<group>"; };
+		FA8947652156E87C00AF1732 /* Generals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generals.swift; sourceTree = "<group>"; };
 		FA89476821575FA000AF1732 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
-		FA89476A21577CEF00AF1732 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		FA89476A21577CEF00AF1732 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,20 +113,15 @@
 		FA8947142156BCF500AF1732 /* HasbroSTransformers */ = {
 			isa = PBXGroup;
 			children = (
-				FA8947152156BCF500AF1732 /* AppDelegate.swift */,
-				FA89475F2156E7EB00AF1732 /* Transformer.swift */,
-				FA8947612156E82200AF1732 /* API.swift */,
-				FA8947632156E84900AF1732 /* Settings.swift */,
-				FA8947652156E87C00AF1732 /* GeneralFunctions.swift */,
-				FA8947472156CB2F00AF1732 /* CollectionViewCell.swift */,
-				FA8947172156BCF500AF1732 /* ViewController.swift */,
-				FA89476A21577CEF00AF1732 /* extensions.swift */,
-				FA8947452156BE7400AF1732 /* DetailsViewController.swift */,
-				FA89476821575FA000AF1732 /* ResultViewController.swift */,
-				FA8947192156BCF500AF1732 /* Main.storyboard */,
-				FA89471C2156BCF600AF1732 /* Assets.xcassets */,
-				FA89471E2156BCF600AF1732 /* LaunchScreen.storyboard */,
-				FA8947212156BCF600AF1732 /* Info.plist */,
+				FA89476C2158749500AF1732 /* AppDelegate */,
+				FA89476D215874BB00AF1732 /* Extensions */,
+				FA89476E2158750600AF1732 /* Models */,
+				FA894774215876AB00AF1732 /* Helpers */,
+				FA89476F2158752700AF1732 /* Networkings */,
+				FA8947702158756800AF1732 /* Resources */,
+				FA8947712158759500AF1732 /* Supportings Files */,
+				FA894772215875BE00AF1732 /* ViewControlers */,
+				FA894773215875E000AF1732 /* Views */,
 			);
 			path = HasbroSTransformers;
 			sourceTree = "<group>";
@@ -147,6 +142,83 @@
 				FA8947372156BCF700AF1732 /* Info.plist */,
 			);
 			path = HasbroSTransformersUITests;
+			sourceTree = "<group>";
+		};
+		FA89476C2158749500AF1732 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				FA8947152156BCF500AF1732 /* AppDelegate.swift */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		FA89476D215874BB00AF1732 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA89476A21577CEF00AF1732 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FA89476E2158750600AF1732 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA89475F2156E7EB00AF1732 /* Transformer.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		FA89476F2158752700AF1732 /* Networkings */ = {
+			isa = PBXGroup;
+			children = (
+				FA8947612156E82200AF1732 /* API.swift */,
+			);
+			path = Networkings;
+			sourceTree = "<group>";
+		};
+		FA8947702158756800AF1732 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FA89471C2156BCF600AF1732 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		FA8947712158759500AF1732 /* Supportings Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA8947212156BCF600AF1732 /* Info.plist */,
+			);
+			path = "Supportings Files";
+			sourceTree = "<group>";
+		};
+		FA894772215875BE00AF1732 /* ViewControlers */ = {
+			isa = PBXGroup;
+			children = (
+				FA8947472156CB2F00AF1732 /* CollectionViewCell.swift */,
+				FA8947172156BCF500AF1732 /* ViewController.swift */,
+				FA8947452156BE7400AF1732 /* DetailsViewController.swift */,
+				FA89476821575FA000AF1732 /* ResultViewController.swift */,
+			);
+			name = ViewControlers;
+			sourceTree = "<group>";
+		};
+		FA894773215875E000AF1732 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA8947192156BCF500AF1732 /* Main.storyboard */,
+				FA89471E2156BCF600AF1732 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FA894774215876AB00AF1732 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FA8947632156E84900AF1732 /* Settings.swift */,
+				FA8947652156E87C00AF1732 /* Generals.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,13 +352,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA89476B21577CEF00AF1732 /* extensions.swift in Sources */,
+				FA89476B21577CEF00AF1732 /* Extensions.swift in Sources */,
 				FA89476921575FA000AF1732 /* ResultViewController.swift in Sources */,
 				FA8947642156E84900AF1732 /* Settings.swift in Sources */,
 				FA8947602156E7EB00AF1732 /* Transformer.swift in Sources */,
 				FA8947622156E82200AF1732 /* API.swift in Sources */,
 				FA8947182156BCF500AF1732 /* ViewController.swift in Sources */,
-				FA8947662156E87C00AF1732 /* GeneralFunctions.swift in Sources */,
+				FA8947662156E87C00AF1732 /* Generals.swift in Sources */,
 				FA8947162156BCF500AF1732 /* AppDelegate.swift in Sources */,
 				FA8947482156CB2F00AF1732 /* CollectionViewCell.swift in Sources */,
 				FA8947462156BE7400AF1732 /* DetailsViewController.swift in Sources */,
@@ -466,7 +538,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29BJ3MZQW5;
-				INFOPLIST_FILE = HasbroSTransformers/Info.plist;
+				INFOPLIST_FILE = "HasbroSTransformers/Supportings Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -485,7 +557,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29BJ3MZQW5;
-				INFOPLIST_FILE = HasbroSTransformers/Info.plist;
+				INFOPLIST_FILE = "HasbroSTransformers/Supportings Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
