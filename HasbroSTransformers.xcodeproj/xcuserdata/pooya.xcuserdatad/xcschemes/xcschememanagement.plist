@@ -4,7 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>HasbroSTransformers.xcscheme</key>
+		<key>HasbroSTransformers.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>TransformersTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>TransformersUITests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -23,6 +33,11 @@
 			<true/>
 		</dict>
 		<key>FA8947302156BCF700AF1732</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA9DAB2721591E8F00EB9F28</key>
 		<dict>
 			<key>primary</key>
 			<true/>
