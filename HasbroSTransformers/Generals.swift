@@ -32,6 +32,7 @@ func getURLImagesListAndPreLoadThem(transformersList : [Transformer]) -> [String
     return preloadedImage
 }
 
+
 func preLoadImage(imagePath : String) -> UIImage {
     
     var image : UIImage = UIImage(named: "questionMark") ?? #imageLiteral(resourceName: "questionMark")
