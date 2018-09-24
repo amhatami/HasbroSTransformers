@@ -2,14 +2,14 @@
 //  DetailsViewController.swift
 //  HasbroSTransformers
 //
-//  Created by Pooya on 2018-09-22.
+//  Created by Amir on 2018-09-22.
 //  Copyright © 2018 Amir. All rights reserved.
 //
 
 import UIKit
 
 class DetailsViewController: UIViewController {
-
+    
     var keyIndex: String = ""
     var typeValue: String = ""
     var oneTransformer: Transformer?
@@ -21,8 +21,8 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var actIndicatorView: UIActivityIndicatorView!
     
     let api = API()
-   // var apiToken : String = ""
-
+    // var apiToken : String = ""
+    
     let teamDef: [Int: String] =
         [0: "A",
          1: "D"]
@@ -74,9 +74,9 @@ class DetailsViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-
     
-    // MARK: - read Input Values
+    //read data from form for save action
+    //MARK: - reafctor in case
     func readInputs() -> [String : Any] {
         
         var jsonObject: [String: Any]  = [
@@ -117,12 +117,12 @@ class DetailsViewController: UIViewController {
     }
     
     
-    //MARK: - set form Input Values
+    //set values and prepare page for EDIT
     func setInputs(inputTransformerValues : Transformer) {
         
         nameText.text = inputTransformerValues.name
         teamSeg.selectedSegmentIndex = (inputTransformerValues.team == "A" ) ? 0  : 1
-
+        
         for  segment in attrSegment {
             switch segment.tag {
             case 3:
@@ -154,6 +154,7 @@ class DetailsViewController: UIViewController {
         
     }
     
-
-
+    
+    
 }
+

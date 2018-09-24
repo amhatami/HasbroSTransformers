@@ -2,30 +2,24 @@
 //  extensions.swift
 //  HasbroSTransformers
 //
-//  Created by Pooya on 2018-09-23.
+//  Created by Amir on 2018-09-23.
 //  Copyright © 2018 Amir. All rights reserved.
 //
 
 import UIKit
 
-//
+// data collection protocol for ViewController
 extension ViewController : DataCollectionProtocol {
     func passData(index: Int) {
         
-        print("hello paddData \(index)")
         let vc =  storyboard?.instantiateViewController(withIdentifier: "DetailsAddOrEdit") as? DetailsViewController
         vc?.keyIndex = transformerBattles[index].id
         vc?.oneTransformer = transformerBattles[index]
         vc?.typeValue = "Edit"
-        print("Delete")
-        print(transformerBattles[index].id)
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     func deleteData(index: Int) {
-        print("hello deleteData \(index)")
-        print("Delete")
-        print(transformerBattles[index].id)
         _ = api.deleteTransformer(transformer: transformerBattles[index])
         transformerBattles.remove(at: index)
         let transformerMain = api.getTransformers()
@@ -35,7 +29,7 @@ extension ViewController : DataCollectionProtocol {
     }
 }//end of extension  UIButton
 
-
+// extention for UICollectionViewDelegateFlowLayout
 extension ViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -61,7 +55,7 @@ extension ViewController : UICollectionViewDelegateFlowLayout {
 }//end of extension  ViewController
 
 
- //return color from RGB and HEX
+//return color from RGB and HEX
 extension UIColor {
     
     //few ready colors
@@ -146,7 +140,7 @@ public extension UIButton {
         self.layer.shadowRadius = 12
         self.layer.shadowOffset = CGSize(width: 1, height: 1)
     }
-
+    
     func customizeDeleteButton() {
         let c1GreenColor = (UIColor(red: -0.108958, green: 0.714926, blue: 0.758113, alpha: 1.0))
         let c2GreenColor = (UIColor(red: 0.108958, green: 0.714926, blue: 0.758113, alpha: 1.0))
@@ -159,7 +153,7 @@ public extension UIButton {
         self.layer.shadowRadius = 12
         self.layer.shadowOffset = CGSize(width: 1, height: 1)
     }
-
+    
     func customizeBattleButton() {
         let c1GreenColor = (UIColor(red: -0.108958, green: 0.714926, blue: 0.758113, alpha: 1.0))
         self.backgroundColor = UIColor(patternImage: UIImage(named: "Stainless-Steel.jpg")!)
@@ -171,7 +165,7 @@ public extension UIButton {
         self.layer.shadowRadius = 12
         self.layer.shadowOffset = CGSize(width: 2, height: 2)
     }
-
+    
     func shake(horizantaly:CGFloat = 0  , Verticaly:CGFloat = 0) {
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.05
@@ -222,6 +216,7 @@ public extension  UITextField {
         self.layer.shadowRadius = 2
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
     }
-
+    
 }//end of extension  UITextField
+
 

@@ -2,23 +2,30 @@
 //  API.swift
 //  HasbroSTransformers
 //
-//  Created by Pooya on 2018-09-22.
+//  Created by Amir on 2018-09-22.
 //  Copyright © 2018 Amir. All rights reserved.
 //
 
 import Foundation
 
+
+// tools for deal with firebase api
 class API {
     
     let apiURL = "https://transformers-api.firebaseapp.com/transformers"
     let apiTokenURL = "https://transformers-api.firebaseapp.com/allspark"
     var apiToken : String = ""
+    //  statice token for test
     //    var apiToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0cmFuc2Zvcm1lcnNJZCI6Ii1MTXBqZF9wVXRNaVFFOE9xemVvIiwiaWF0IjoxNTM3NDI2MjMzfQ.zP8_8FBwPhBbnYNAZKUzv40b75MOlmgsFcOze-E_41M"
+    
+    
+    
     
     //get one token in case of first time app loading
     func getOneToken() -> String {
         
         let parameters : [String : Any] = [:]
+        //dispatchSemaphore provides an efficient implementation of a traditional counting semaphore,
         let semaphore = DispatchSemaphore(value: 0)
         var dataString : String = ""
         
@@ -57,12 +64,17 @@ class API {
         task.resume()
         semaphore.wait()
         return dataString
-    }
+    } // end of getOneToken() -> String
     
+    
+    
+    
+    // get the list of all transformers in api over token
     func getTransformers() -> [Transformer] {
         
         var tranformersMain : TransformerList?
         let parameters : [String : Any] = [:]
+        //dispatchSemaphore provides an efficient implementation of a traditional counting semaphore,
         let semaphore = DispatchSemaphore(value: 0)
         
         //create the url with URL
@@ -106,12 +118,16 @@ class API {
         semaphore.wait()
         
         return(tranformersMain?.transformers)!
-    }
+    } // end of getTransformers() -> [Transformer]
     
     
+    
+    
+    // post one transformer to the api over token
     func postTransformer(transformer : Transformer) -> Transformer {
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
         var transformerOut : Transformer!
+        //dispatchSemaphore provides an efficient implementation of a traditional counting semaphore,
         let semaphore = DispatchSemaphore(value: 0)
         //create the url with URL
         let url = URL(string: apiURL )!
@@ -155,12 +171,17 @@ class API {
         semaphore.wait()
         
         return transformerOut
-    }
+    }// end of postTransformer(transformer : Transformer) -> Transformer
     
     
+    
+    
+    
+    // put one transformer over exsiting one with the same id to the api over token
     func putTransformer(transformer : Transformer) -> Transformer {
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
         var transformerOut : Transformer!
+        //dispatchSemaphore provides an efficient implementation of a traditional counting semaphore,
         let semaphore = DispatchSemaphore(value: 0)
         //create the url with URL
         let url = URL(string: apiURL )!
@@ -209,10 +230,14 @@ class API {
     
     
     
+    
+    
+    // delete on trasformer with id to the api over token
     func deleteTransformer(transformer : Transformer) -> String {
         //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
         var dataString : String = ""
         let parameters : [String : Any] = [:]
+        //dispatchSemaphore provides an efficient implementation of a traditional counting semaphore,
         let semaphore = DispatchSemaphore(value: 0)
         
         //create the url with URL
@@ -257,5 +282,6 @@ class API {
     }  // end of deleteTransformer(transformer : Transformer)
     
     
-}
+}//end of class API
+
 

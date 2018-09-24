@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  HasbroSTransformers
 //
-//  Created by Pooya on 2018-09-22.
+//  Created by Amir on 2018-09-22.
 //  Copyright © 2018 Amir. All rights reserved.
 //
 

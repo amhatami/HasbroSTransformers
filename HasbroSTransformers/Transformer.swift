@@ -2,11 +2,13 @@
 //  Transformer.swift
 //  HasbroSTransformers
 //
-//  Created by Pooya on 2018-09-22.
+//  Created by Amir on 2018-09-22.
 //  Copyright © 2018 Amir. All rights reserved.
 //
 import Foundation
 
+
+// Transformer Model Encodable & Decodable macth with firebase api
 struct Transformer: Encodable & Decodable {
     var id: String
     var name: String
@@ -21,6 +23,7 @@ struct Transformer: Encodable & Decodable {
     var skill : Int
     var team_icon: String
     
+    // initiat new transformer model from input json or dictionary
     init(json: [String: Any]) {
         id = json["id"] as? String ??  ""
         name = json["name"] as? String ?? ""
@@ -36,8 +39,9 @@ struct Transformer: Encodable & Decodable {
         team_icon = json["team_icon"] as? String ?? ""
     }
     
+    // initiat empty / Best A / Best D of transformer model by String input
+    // make options EMPTY BestA BestD and any other string will generate empty transformer
     init(make: String ) {
-        
         if make == "EMPTY" {
             id = ""
             name = ""
@@ -93,6 +97,7 @@ struct Transformer: Encodable & Decodable {
         }
     }
     
+    // convert transformer to Json or dictionay of [String : Any]
     func toJson() -> [String : Any] {
         return [
             "id": self.id,
@@ -108,27 +113,26 @@ struct Transformer: Encodable & Decodable {
             "skill": self.skill
         ]
     }
-
+    
+    // find winner based on mentioned game rules
     func amIWinnerVS(vsTransformer : Transformer) -> String {
         var amIWin : String = "tie"
         let mySelfOverall =  ( self.strength +
-                            self.intelligence +
-                            self.speed +
-                            self.endurance +
-                            self.rank +
-                            self.courage +
-                            self.firepower +
-                            self.skill ) / 8
+            self.intelligence +
+            self.speed +
+            self.endurance +
+            self.rank +
+            self.courage +
+            self.firepower +
+            self.skill ) / 8
         let vsOverall = ( vsTransformer.strength +
-                            vsTransformer.intelligence +
-                            vsTransformer.speed +
-                            vsTransformer.endurance +
-                            vsTransformer.rank +
-                            vsTransformer.courage +
-                            vsTransformer.firepower +
-                            vsTransformer.skill ) / 8
-
-//        if (self.name.lowercased() == "optimus prime"  )
+            vsTransformer.intelligence +
+            vsTransformer.speed +
+            vsTransformer.endurance +
+            vsTransformer.rank +
+            vsTransformer.courage +
+            vsTransformer.firepower +
+            vsTransformer.skill ) / 8
         
         if (vsTransformer.name.lowercased() == "optimus prime" &&
             self.name.lowercased() != "predaking" &&
@@ -168,103 +172,18 @@ struct Transformer: Encodable & Decodable {
         } else if (mySelfOverall < vsOverall ) {
             amIWin = "lose"
         }
-
+        
         return amIWin
     }
-
-    
-//    func amIWinnerVS(vsTransformer : Transformer) -> String {
-//        var amIWin : String = "tie"
-//
-//        if ( checkRules(self, vsTransformer, "rule11") == "win" ) {
-//            amIWin = "win"
-//        } else if ( checkRules(vsTransformer, self, "rule11") == "win" ) {
-//            amIWin = "lose"
-//        } else if ( checkRules(self, vsTransformer, "rule12") == "win" ) {
-//            amIWin = "win"
-//        } else if ( checkRules(vsTransformer, self, "rule12") == "win" ) {
-//            amIWin = "lose"
-//        } else if (self.courage >= vsTransformer.courage + 4 && self.strength >=  vsTransformer.strength + 3 ) {
-//            amIWin = "win"
-//        } else if (self.courage + 4 < vsTransformer.courage && self.strength + 3 <  vsTransformer.strength ) {
-//            amIWin = "lose"
-//        } else if (self.skill >= vsTransformer.skill + 3 ) {
-//            amIWin = "win"
-//        } else if (self.skill + 3 < vsTransformer.skill ) {
-//            amIWin = "lose"
-//        } else if (checkRules(self, vsTransformer, "rule4") == "win" ) {
-//            amIWin = "win"
-//        } else if (checkRules(vsTransformer, self, "rule4") == "win" ) {
-//            amIWin = "lose"
-//        }
-//
-//        return amIWin
-//    }
     
     
-    
-    
-    func checkRules(_ t1 : Transformer , _ t2 : Transformer , _ ruleName : String) -> String {
-        
-        var resultCase = "tie"
-        
-        let t1Overall =  ( t1.strength +
-            t1.intelligence +
-            t1.speed +
-            t1.endurance +
-            t1.rank +
-            t1.courage +
-            t1.firepower +
-            t1.skill ) / 8
-        let t2Overall = ( t2.strength +
-            t2.intelligence +
-            t2.speed +
-            t2.endurance +
-            t2.rank +
-            t2.courage +
-            t2.firepower +
-            t2.skill ) / 8
-        
-        switch ruleName {
-        case "rule11":
-            resultCase = (t1.name.lowercased() == "optimus prime" &&
-                            t2.name.lowercased() != "predaking" &&
-                            t2.name.lowercased() != t1.name.lowercased()) ?
-                                "win" : resultCase
-                break
-        case "rule12":
-            resultCase = (t1.name.lowercased() == t2.name.lowercased() ||
-                           ( t1.name.lowercased() == "predaking" &&
-                            t2.name.lowercased() == "optimus prime")) ?
-                                "gameover" : resultCase
-                break
-        case "rule2":
-            resultCase = (t1.courage >= t2.courage + 4 && t1.strength >=  t2.strength + 3 ) ?
-                        "win" : resultCase
-            break
-        case "rule3":
-            resultCase = (t1.skill >= t2.skill + 3 ) ?
-                "win" : resultCase
-            break
-        case "rule4":
-            resultCase = (t1Overall > t2Overall ) ?
-                "win" : resultCase
-            break
-        default:
-            resultCase = ""
-            break
-        }
-        return resultCase
-    }
-    
-    
-    
+    // get team name from transformer model
     func getTeamName() -> String {
         return self.team == "A" ? "Autobots" : "Decepticons"
     }
     
     
-}
+} //End of struct Transformer: Encodable & Decodable
 
 
 struct TransformerList: Decodable {
@@ -275,13 +194,13 @@ struct TransformerList: Decodable {
     //            return transformers[index]
     //        }
     //    }
-}
+} //End of struct TransformerList: Decodable
 
 
+// class which provide some tools for encapsulation
 class TransformerTools {
     
-    
-    
+    // separate array of transformers to two arrays for team A and Team D
     func separateByFields(transformers : [Transformer] ) -> ([Transformer],[Transformer]) {
         var transformerInternalA : [Transformer] = []
         var transformerInternalD : [Transformer] = []
@@ -292,20 +211,19 @@ class TransformerTools {
             } else if (onetransformer.team == "D") {
                 transformerInternalD.append(onetransformer)
             } else {
-                // TODO
+                // todo nothing
             }
         }
-        //print(transformerA)
-        //print(transformerD)
         return ( sortTransformerArray(transformers: transformerInternalA) , sortTransformerArray(transformers: transformerInternalD) )
     }
     
     
+    // sort array trasformer array based on rank
     func sortTransformerArray(transformers : [Transformer]) -> [Transformer] {
         return transformers.sorted(by: { $0.rank > $1.rank })
     }
     
-    
+    // join two array of team A and Team B one by one and fill empty spots with empty transdomer
     func makeBattelsList(transformerA : [Transformer],transformerD : [Transformer] ) -> ([Transformer]) {
         var transformerMainInternal : [Transformer] = []
         let lenA = transformerA.count
@@ -329,71 +247,5 @@ class TransformerTools {
     }
     
     
-}
-
-
-
-//
-//
-//struct Transformer1: Encodable & Decodable {
-//
-//    var id: String
-//    var name: String?
-//    var team : String?
-//    var strength : Int?
-//    var intelligence : Int?
-//    var speed : Int?
-//    var endurance : Int?
-//    var rank : Int?
-//    var courage : Int?
-//    var firepower : Int?
-//    var skill : Int?
-//    var team_icon: String?
-//
-////    "courage": 9,
-////    "endurance": 8,
-////    "firepower": 10,
-////    "id": "-LMpkJaYntUrnPPWL5xZ",
-////    "intelligence": 10,
-////    "name": "Megatron",
-////    "rank": 10,
-////    "skill": 9,
-////    "speed": 4,
-////    "strength": 10,
-////    "team": "D",
-////    "team_icon": "https://tfwiki.net/mediawiki/images2/archive/8/8d/20110410191659%21Symbol_decept_reg.png"
-//
-//    init(json: [String: Any]) {
-//        id = json["id"] as? String ??  ""
-//        name = json["name"] as? String ?? ""
-//        team = json["team"] as? String ?? ""
-//        strength = json["strength"] as? Int ?? 0
-//        intelligence = json["intelligence"] as? Int ?? 0
-//        speed = json["speed"] as? Int ?? 0
-//        endurance = json["endurance"] as? Int ?? 0
-//        rank = json["rank"] as? Int ?? 0
-//        courage = json["courage"] as? Int ?? 0
-//        firepower = json["firepower"] as? Int ?? 0
-//        skill = json["skill"] as? Int ?? 0
-//        team_icon = json["team_icon"] as? String ?? ""
-//    }
-//
-//    func toJson() -> [String : Any] {
-//        return [
-//            "id": self.id,
-//            "name": self.name,
-//            "team": self.team,
-//            "strength": self.strength,
-//            "intelligence": self.intelligence,
-//            "speed": self.speed,
-//            "endurance": self.endurance,
-//            "rank": self.rank,
-//            "courage": self.courage,
-//            "firepower": self.firepower,
-//            "skill": self.skill
-//        ]
-//
-//
-//    }
-//}
+} //end of class TransformerTools
 
