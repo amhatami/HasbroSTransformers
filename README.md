@@ -7,11 +7,11 @@ Simple Game of Battle between Autobots and the Decepticons that you have created
 
 ● A battle between opponents uses the following rules:
 
-	○ If any fighter is down 4 or more points of courage and 3 or more points of strength compared to their opponent, the opponent automatically wins the face-off regardless of overall rating (opponent has ran away)
+○ If any fighter is down 4 or more points of courage and 3 or more points of strength compared to their opponent, the opponent automatically wins the face-off regardless of overall rating (opponent has ran away)
 	
-	○ Otherwise, if one of the fighters is 3 or more points of skill above their opponent, they win the fight regardless of overall rating
+○ Otherwise, if one of the fighters is 3 or more points of skill above their opponent, they win the fight regardless of overall rating
 	
-	○ The winner is the Transformer with the highest overall rating
+○ The winner is the Transformer with the highest overall rating
 	
 ● In the event of a tie, both Transformers are considered destroyed
 
