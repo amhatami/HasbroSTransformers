@@ -40,8 +40,8 @@ Survivors from the losing team (Autobots): Hubcap
 ## Requirements
 
 - iOS 10.0 , 11.4, 12.0
-- Xcode 10.0
-- Swift 4.2
+- Xcode 9 , 10.0
+- Swift 4, 4.2
 
 ## Usage
 
